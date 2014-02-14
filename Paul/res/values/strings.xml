@@ -13,5 +13,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="title_activity_validate_login">ValidateLoginActivity</string>
+    <string name="title_activity_login_success">LoginSuccessActivity</string>
+    <string name="login_success">Login Success</string>
 
 </resources>

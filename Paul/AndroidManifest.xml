@@ -34,6 +34,10 @@
             android:name="com.example.m4.ValidateLoginActivity"
             android:label="@string/title_activity_validate_login" >
         </activity>
+        <activity
+            android:name="com.example.m3.LoginSuccessActivity"
+            android:label="@string/title_activity_login_success" >
+        </activity>
     </application>
 
 </manifest>
