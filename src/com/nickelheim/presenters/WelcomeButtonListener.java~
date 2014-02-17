@@ -1,0 +1,15 @@
+
+
+public class WelcomeButtonListener {
+
+
+    public void login() {
+
+    }
+
+    public void register() {
+
+    }
+
+
+}
