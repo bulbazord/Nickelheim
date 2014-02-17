@@ -6,9 +6,9 @@
     <string name="reg_fname">First Name</string>
     <string name="reg_lname">Last Name</string>
     <string name="reg_email">Email</string>
-    <string name="a">a</string>
-    <string name="b">b</string>
-    <string name="c">c</string>
+    <string name="reg_username">Username</string>
+    <string name="reg_password">Password</string>
+    <string name="reg_password_confirm">Type password again</string>
     <string name="login_password">Password</string>
     <string name="login_username">Username</string>
 </resources>
