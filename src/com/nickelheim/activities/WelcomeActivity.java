@@ -5,9 +5,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-public class WelcomeActivity extends Activity
+public class WelcomeActivity extends Activity implements WelcomeView
 {
-    
+    private WelcomeButtonListener listener;
+
 
     /** Called when the activity is first created. */
     @Override
@@ -15,6 +16,8 @@ public class WelcomeActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
+	listener = new WelcomeButtonListener(this, new MemoryModel());
+
     }
 
 
