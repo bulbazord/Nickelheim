@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Nickelheim</string>
     <string name="button_start_login">Login</string>
+    <string name="button_start_register">Register</string>
 </resources>
