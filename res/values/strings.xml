@@ -3,4 +3,12 @@
     <string name="app_name">Nickelheim</string>
     <string name="button_start_login">Login</string>
     <string name="button_start_register">Register</string>
+    <string name="reg_fname">First Name</string>
+    <string name="reg_lname">Last Name</string>
+    <string name="reg_email">Email</string>
+    <string name="a">a</string>
+    <string name="b">b</string>
+    <string name="c">c</string>
+    <string name="login_password">Password</string>
+    <string name="login_username">Username</string>
 </resources>
