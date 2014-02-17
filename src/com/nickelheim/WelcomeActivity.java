@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-import com.example.m3.R;
+import com.nickelheim.R;
 
 public class WelcomeActivity extends Activity {
 

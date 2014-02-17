@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.m3.LoginSuccessActivity;
-import com.example.m3.R;
+import com.nickelheim.LoginSuccessActivity;
+import com.nickelheim.R;
 
 public class LoginActivity extends Activity {
     

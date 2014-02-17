@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.example.m3.R;
+import com.nickelheim.R;
 
 public class RegisterActivity extends Activity {
 
