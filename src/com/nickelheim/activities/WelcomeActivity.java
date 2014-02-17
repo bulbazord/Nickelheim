@@ -4,6 +4,7 @@ import com.nickelheim.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import com.nickelheim.presenters.WelcomeButtonListener;
 
 public class WelcomeActivity extends Activity implements WelcomeView
 {
@@ -16,17 +17,17 @@ public class WelcomeActivity extends Activity implements WelcomeView
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
-	listener = new WelcomeButtonListener(this, new MemoryModel());
+	listener = new WelcomeButtonListener(this);
 
     }
 
 
     public void startLogin(View view) {
-	
+	listener.login();
     }
 
 
     public void startRegister(View view) {
-
+	listener.startRegister();
     }
 }
