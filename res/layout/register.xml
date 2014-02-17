@@ -56,14 +56,9 @@
 <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/button_start_login"
-    android:onClick="startLogin"
+    android:text="@string/button_attempt_register"
+    android:onClick="attemptRegistration"
     />
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/button_start_register"
-    android:onClick="startRegister"
-    />
+
 </LinearLayout>
 
