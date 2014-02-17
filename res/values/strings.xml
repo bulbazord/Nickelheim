@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Nickelheim</string>
+    <string name="button_start_login">Login</string>
 </resources>
