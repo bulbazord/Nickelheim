@@ -8,7 +8,7 @@
     <string name="reg_email">Email</string>
     <string name="reg_username">Username</string>
     <string name="reg_password">Password</string>
-    <string name="reg_password_confirm">Type password again</string>
+    <string name="reg_password_confirm">Retype password</string>
     <string name="login_password">Password</string>
     <string name="login_username">Username</string>
 </resources>

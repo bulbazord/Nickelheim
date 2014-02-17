@@ -1,19 +1,19 @@
 package com.nickelheim.presenters;
 
-import com.nickelheim.views.WelcomeView;
+import com.nickelheim.views.AbstractWelcomeActivity;
 import android.content.Intent;
 import com.nickelheim.activities.LoginActivity;
 
 public class WelcomeButtonListener {
 
-    private WelcomeView view;
+    private AbstractWelcomeActivity view;
 
-    public WelcomeButtonListener(WelcomeView view) {
+    public WelcomeButtonListener(AbstractWelcomeActivity view) {
 	this.view = view;
     }
 
     public void startLogin() {
-	Intent intent  = new Intent(this, LoginActivity.class);
+	Intent intent  = new Intent(view, LoginActivity.class);
 	startActivity(intent);
     }
 

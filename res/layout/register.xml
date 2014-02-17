@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<EditText
+    android:id="@+id/register_first_name_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_fname" />
+<EditText
+    android:id="@+id/register_last_name_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_lname" />
+<EditText
+    android:id="@+id/register_email_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_email" />
+<EditText
+    android:id="@+id/register_username_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_username" />
+<EditText
+    android:id="@+id/register_password_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_password" />
+<EditText
+    android:id="@+id/register_password_confirmation_field"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:text="@string/reg_password_confirm" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/button_start_login"
+    android:onClick="startLogin"
+    />
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/button_start_register"
+    android:onClick="startRegister"
+    />
+</LinearLayout>
+
