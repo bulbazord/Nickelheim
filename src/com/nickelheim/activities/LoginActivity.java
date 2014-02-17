@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-public class LoginActivty extends Activity {
+public class LoginActivity extends Activity {
 
     @Override
-    public void onCreate(Bunle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
     }
