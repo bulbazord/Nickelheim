@@ -1,6 +1,7 @@
 package com.nickelheim.presenters;
 
 import com.nickelheim.views.WelcomeView;
+import android.content.Intent;
 
 public class WelcomeButtonListener {
 
@@ -11,11 +12,12 @@ public class WelcomeButtonListener {
     }
 
     public void login() {
-
+	Intent inent  = new Intent(this, LoginActivity.class);
+	startActivity(intent);
     }
 
     public void register() {
-
+	// Intent intent = new Intent(this, );
     }
 
 
