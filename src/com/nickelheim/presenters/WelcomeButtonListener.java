@@ -14,7 +14,7 @@ public class WelcomeButtonListener {
 
     public void startLogin() {
 	Intent intent  = new Intent(view, LoginActivity.class);
-	startActivity(intent);
+	view.startActivity(intent);
     }
 
     public void startRegister() {
