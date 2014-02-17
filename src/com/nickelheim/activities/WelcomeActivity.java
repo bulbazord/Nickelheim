@@ -29,6 +29,6 @@ public class WelcomeActivity extends Activity implements WelcomeView
 
 
     public void startRegister(View view) {
-	listener.startRegister();
+	listener.register();
     }
 }
