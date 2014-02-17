@@ -1,5 +1,6 @@
-package com.nickelheim;
+package com.nickelheim.activities;
 
+import com.nickelheim.R;
 import android.app.Activity;
 import android.os.Bundle;
 
