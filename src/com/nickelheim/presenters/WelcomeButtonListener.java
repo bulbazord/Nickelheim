@@ -12,12 +12,12 @@ public class WelcomeButtonListener {
 	this.view = view;
     }
 
-    public void startLogin() {
+    public void beginLogin() {
 	Intent intent  = new Intent(view, LoginActivity.class);
 	view.startActivity(intent);
     }
 
-    public void startRegister() {
+    public void beginRegister() {
 	// Intent intent = new Intent(this, );
     }
 

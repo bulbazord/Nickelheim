@@ -23,11 +23,11 @@ public class WelcomeActivity extends AbstractWelcomeActivity {
 
 
     public void startLogin(View view) {
-	listener.startLogin();
+	listener.beginLogin();
     }
 
 
     public void startRegister(View view) {
-	listener.startRegister();
+	listener.beginRegister();
     }
 }
