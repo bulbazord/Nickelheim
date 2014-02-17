@@ -12,5 +12,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name="com.nickelheim.activities.LoginActivity"
+            android:label="@string/login_activity"
+            android:parentActivityName="com.nickelheim.activities.WelcomeActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nickelheim.activities.WelcomeActivity"
+            />
+        </activity>
     </application>
 </manifest>
