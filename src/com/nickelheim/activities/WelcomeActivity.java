@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import com.nickelheim.presenters.WelcomeButtonListener;
+import com.nickelheim.views.WelcomeView;
 
 public class WelcomeActivity extends Activity implements WelcomeView
 {
