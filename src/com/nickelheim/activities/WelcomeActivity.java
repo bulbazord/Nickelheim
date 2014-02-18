@@ -1,9 +1,9 @@
 package com.nickelheim.activities;
 
-import com.nickelheim.R;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.nickelheim.R;
 import com.nickelheim.presenters.WelcomeButtonListener;
 import com.nickelheim.views.AbstractWelcomeActivity;
 
@@ -32,7 +32,7 @@ public class WelcomeActivity extends AbstractWelcomeActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
-	listener = new WelcomeButtonListener(this);
+        listener = new WelcomeButtonListener(this);
 
     }
 

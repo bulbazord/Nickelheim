@@ -1,7 +1,8 @@
 package com.nickelheim.views;
 
-import android.view.View;
 import android.app.Activity;
+import android.view.View;
+
 /**
  * The view abstraction between the presenter responsible for
  * welcoming the user and the corresponding Activity/view.

@@ -42,7 +42,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="17dp"
     android:ems="10"
-    android:inputType="textPersonName"
+    android:inputType="textPassword"
     android:text="@string/reg_password" />
 <EditText
     android:id="@+id/register_password_confirmation_field"
@@ -50,7 +50,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="17dp"
     android:ems="10"
-    android:inputType="textPersonName"
+    android:inputType="textPassword"
     android:text="@string/reg_password_confirm" />
 
 <Button

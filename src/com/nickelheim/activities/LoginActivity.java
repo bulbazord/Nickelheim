@@ -1,9 +1,13 @@
 package com.nickelheim.activities;
 
-import com.nickelheim.R;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import com.nickelheim.R;
+import com.nickelheim.models.UserList;
+import com.nickelheim.presenters.LoginButtonListener;
+import com.nickelheim.views.AbstractLoginActivity;
 
 
 /**
@@ -12,7 +16,10 @@ import android.view.View;
  * @author matthugs and xiaobai
  * @version 1.0
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends AbstractLoginActivity {
+    private LoginButtonListener listener;
+    private EditText usernameField;
+    private EditText passwordField;
 
     /**
      * Initializes the activity.
@@ -22,10 +29,16 @@ public class LoginActivity extends Activity {
      * @param Bundle to be loaded if the application was saved
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        listener = new LoginButtonListener(this, this, new UserList());
+
+        usernameField =  (EditText) findViewById(R.id.login_username);
+        passwordField =  (EditText) findViewById(R.id.login_password);
     }
+    
 
     /**
      * Signals to the presenter that the user has attempted to log in.
@@ -34,7 +47,17 @@ public class LoginActivity extends Activity {
      *
      * @param View standard argument for button-tied method
      */
+    @Override
+    public String getUsername() {
+        return usernameField.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordField.getText().toString();
+    }
+    
     public void attemptLogin(View view) {
-	// To be filled out!
+        listener.loginSuccess();
     }
 }

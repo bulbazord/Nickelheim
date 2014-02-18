@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Nickelheim</string>
     <string name="button_start_login">Login</string>
     <string name="button_start_register">Register</string>
@@ -13,4 +14,10 @@
     <string name="login_username">Username</string>
     <string name="login_activity">Login</string>
     <string name="button_attempt_register">Register!</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="success">Success!</string>
+    <string name="title_activity_login_success">LoginSuccessActivity</string>
+
 </resources>
