@@ -20,7 +20,6 @@ public class LoginActivity extends AbstractLoginActivity {
     private LoginButtonListener listener;
     private EditText usernameField;
     private EditText passwordField;
-    private UserList ul;
 
     /**
      * Initializes the activity.

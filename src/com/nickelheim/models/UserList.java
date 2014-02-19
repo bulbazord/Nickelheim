@@ -21,28 +21,32 @@ public class UserList implements Model {
     
     @Override
     public boolean isValidUser(final String username, final String password) {
-        User user = new User(username, password);
+        User user = userList.get(username);
         if (user != null) {
-            if (password.equals(user.getPassword())) {
+            if (user.getPassword().equals(password)) {
                 return true;
-            }
-            
-        }
+            } 
+        } 
         return false;
     }
     
     public boolean isValidRegistration(final String username, final String password) {
-        if (null == username) {
-            return false;
-        }
-        if (null == password) {
-            return false;
-        }
-        if (userList.containsKey(username)) {
-            return false;
-        }
+        boolean isValid;
+        //if (username == null) {
+            //isValid = false;
+        //}
+        //if (password == null) {
+            //isValid = false;
+        //}
+        //if (userList.containsKey(username)) {
+            //isValid = false;
+        //}
+        
         addUser(username, password);
-        return true;  
+        isValid = true; 
+
+        return isValid;
+         
     }
     
     @Override

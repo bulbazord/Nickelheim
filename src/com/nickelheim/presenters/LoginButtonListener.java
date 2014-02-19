@@ -24,7 +24,6 @@ public class LoginButtonListener {
         String username = view.getUsername();
         String password = view.getPassword();
         boolean isValidUser = model.isValidUser(username, password);
-        System.out.println(isValidUser);
         if(isValidUser) {
             Intent intent  = new Intent(view, LoginSuccessActivity.class);
             view.startActivity(intent);
