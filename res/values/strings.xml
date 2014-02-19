@@ -19,5 +19,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="success">Success!</string>
     <string name="title_activity_login_success">LoginSuccessActivity</string>
+    <string name="title_activity_registration_success">RegistrationSuccessActivity</string>
 
 </resources>

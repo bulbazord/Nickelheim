@@ -20,6 +20,7 @@ public class LoginActivity extends AbstractLoginActivity {
     private LoginButtonListener listener;
     private EditText usernameField;
     private EditText passwordField;
+    private UserList ul;
 
     /**
      * Initializes the activity.
@@ -33,7 +34,8 @@ public class LoginActivity extends AbstractLoginActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        listener = new LoginButtonListener(this, this, new UserList());
+        
+        listener = new LoginButtonListener(this, this, UserList.getInstance());
 
         usernameField =  (EditText) findViewById(R.id.login_username);
         passwordField =  (EditText) findViewById(R.id.login_password);

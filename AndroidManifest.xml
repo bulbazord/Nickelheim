@@ -36,6 +36,10 @@
             android:name="com.nickelheim.activities.LoginSuccessActivity"
             android:label="@string/title_activity_login_success" >
         </activity>
+        <activity
+            android:name="com.nickelheim.activities.RegistrationSuccessActivity"
+            android:label="@string/title_activity_registration_success" >
+        </activity>
     </application>
 
 </manifest>
