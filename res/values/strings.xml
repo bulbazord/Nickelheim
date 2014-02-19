@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="welcome">Welcome to Nickelheim!</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="userName">User Name:</string>
+    <string name="firstName">First Name:</string>
+    <string name="lastName">Last Name:</string>
+    <string name="email">Email Address:</string>
+    <string name="reEnter">Retype password:</string>
+    <string name="password">password:</string>
+    <string name="welcomeL">Welcome to the login screen!</string>
+    <string name="welcomeR">Welcome to the register screen!</string>
     <string name="app_name">Nickelheim</string>
     <string name="button_start_login">Login</string>
     <string name="button_start_register">Register</string>
