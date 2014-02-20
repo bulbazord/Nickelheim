@@ -8,7 +8,7 @@ import com.nickelheim.views.AbstractWelcomeActivity;
 /**
  * The presenter responsible for managing the task of welcoming the user.
  *
- * @author matthugs
+ * @author Nickelheim Group
  * @version 1.0
  */
 public class WelcomeButtonListener {

@@ -9,7 +9,7 @@
     <string name="lastName">Last Name:</string>
     <string name="email">Email Address:</string>
     <string name="reEnter">Retype password:</string>
-    <string name="password">password:</string>
+    <string name="password">Password:</string>
     <string name="welcomeL">Welcome to the login screen!</string>
     <string name="welcomeR">Welcome to the register screen!</string>
     <string name="app_name">Nickelheim</string>

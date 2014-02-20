@@ -31,20 +31,24 @@ public class UserList implements Model {
     }
     
     public boolean isValidRegistration(final String username, final String password) {
-        boolean isValid;
         if (username == null) {
-            isValid = false;
+            return false;
+        }
+        if (username.length() == 0) {
+            return false;
         }
         if (password == null) {
-            isValid = false;
+            return false;
+        }
+        if (password.length() == 0) {
+            return false;
         }
         if (userList.containsKey(username)) {
-            isValid = false;
+            return false;
         } else {
             addUser(username, password);
-            isValid = true; 
+            return true; 
         }
-        return isValid;
          
     }
     

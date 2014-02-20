@@ -13,7 +13,7 @@ import com.nickelheim.views.AbstractLoginActivity;
 /**
  * An activity in which the user can log-in to the system.
  *
- * @author matthugs and xiaobai
+ * @author Nickelheim Group
  * @version 1.0
  */
 public class LoginActivity extends AbstractLoginActivity {

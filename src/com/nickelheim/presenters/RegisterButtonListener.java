@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.nickelheim.activities.LoginActivity;
+import com.nickelheim.activities.RegistrationSuccessActivity;
 import com.nickelheim.models.UserList;
 import com.nickelheim.views.AbstractRegisterActivity;
 
@@ -24,9 +24,8 @@ public class RegisterButtonListener {
         String username = view.getUsername();
         String password = view.getPassword();
         boolean isValidRegistration = model.isValidRegistration(username, password);
-        //System.out.println(isValidRegistration);
         if(isValidRegistration) {
-            Intent intent  = new Intent(view, LoginActivity.class);
+            Intent intent  = new Intent(view, RegistrationSuccessActivity.class);
             view.startActivity(intent);
         } else {
             Toast.makeText(this.context, "Register not successful.  Try again.", Toast.LENGTH_LONG).show();

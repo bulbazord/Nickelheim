@@ -13,7 +13,7 @@ import com.nickelheim.views.AbstractWelcomeActivity;
  *
  * Contains buttons for logging in and registration. 
  *
- * @author matthugs and xiaobai
+ * @author Nickelheim Group
  * @version 1.0
  */
 public class WelcomeActivity extends AbstractWelcomeActivity {
