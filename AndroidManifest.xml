@@ -40,6 +40,22 @@
             android:name="com.nickelheim.activities.RegistrationSuccessActivity"
             android:label="@string/title_activity_registration_success" >
         </activity>
+        <activity
+            android:name="com.nickelheim.activities.CreateAccountActivity"
+            android:label="@string/title_activity_create_account" >
+        </activity>
+        <activity
+            android:name="com.nickelheim.views.AbstractCreateAccountActivity"
+            android:label="@string/title_activity_abstract_create_account" >
+        </activity>
+        <activity
+            android:name="com.nickelheim.activities.CreateAccountSuccessActivity"
+            android:label="@string/title_activity_create_account_success" >
+        </activity>
+        <activity
+            android:name="com.nickelheim.activities.LoginSuccessActivity"
+            android:label="@string/title_activity_login_success" >
+        </activity>
     </application>
 
 </manifest>

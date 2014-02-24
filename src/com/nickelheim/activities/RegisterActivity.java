@@ -14,7 +14,6 @@ public class RegisterActivity extends AbstractRegisterActivity {
     private RegisterButtonListener listener;
     private EditText usernameField;
     private EditText passwordField;
-    private UserList userList;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +37,8 @@ public class RegisterActivity extends AbstractRegisterActivity {
         return passwordField.getText().toString();
     }
     
-    public UserList getUserList() {
-        return userList;
-    }
-    
     public void attemptRegistration(View view) {
-        listener.registrationSuccess();
+        listener.attemptRegistration();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

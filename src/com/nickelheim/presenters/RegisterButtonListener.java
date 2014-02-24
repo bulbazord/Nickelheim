@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.nickelheim.activities.RegistrationSuccessActivity;
+import com.nickelheim.activities.CreateAccountActivity;
 import com.nickelheim.models.UserList;
 import com.nickelheim.views.AbstractRegisterActivity;
 
 public class RegisterButtonListener {
+    public static final String USERNAME = "username";
     private Context context;
     private AbstractRegisterActivity view;
     private UserList model;
@@ -20,12 +21,13 @@ public class RegisterButtonListener {
         
     }
      
-    public void registrationSuccess() {
+    public void attemptRegistration() {
         String username = view.getUsername();
         String password = view.getPassword();
         boolean isValidRegistration = model.isValidRegistration(username, password);
         if(isValidRegistration) {
-            Intent intent  = new Intent(view, RegistrationSuccessActivity.class);
+            Intent intent  = new Intent(view, CreateAccountActivity.class);
+            intent.putExtra(USERNAME, username);
             view.startActivity(intent);
         } else {
             Toast.makeText(this.context, "Register not successful.  Try again.", Toast.LENGTH_LONG).show();

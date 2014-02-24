@@ -9,6 +9,7 @@ import com.nickelheim.models.UserList;
 import com.nickelheim.views.AbstractLoginActivity;
 
 public class LoginButtonListener {
+    public static final String USERNAME = "username";
     private Context context;
     private AbstractLoginActivity view;
     private UserList model;
@@ -20,12 +21,13 @@ public class LoginButtonListener {
         
     }
      
-    public void loginSuccess() {
+    public void attemptLogin() {
         String username = view.getUsername();
         String password = view.getPassword();
         boolean isValidUser = model.isValidUser(username, password);
         if(isValidUser) {
             Intent intent  = new Intent(view, LoginSuccessActivity.class);
+            intent.putExtra(USERNAME, username);
             view.startActivity(intent);
         } else {
             Toast.makeText(this.context, "Login not successful.  Try again.", Toast.LENGTH_LONG).show();

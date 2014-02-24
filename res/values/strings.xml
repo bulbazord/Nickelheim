@@ -3,11 +3,12 @@
 
     <string name="welcome">Welcome to Nickelheim!</string>
     <string name="register">Register</string>
+    <string name="create_account">Create Account</string>
     <string name="login">Login</string>
     <string name="userName">User Name:</string>
-    <string name="firstName">First Name:</string>
-    <string name="lastName">Last Name:</string>
-    <string name="email">Email Address:</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="email">Email Address</string>
     <string name="reEnter">Retype password:</string>
     <string name="password">Password:</string>
     <string name="welcomeL">Welcome to the login screen!</string>
@@ -28,8 +29,12 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="success">Success!</string>
+    <string name="success">Success</string>
+    <string name="login_success">Login Success</string>
     <string name="title_activity_login_success">LoginSuccessActivity</string>
     <string name="title_activity_registration_success">RegistrationSuccessActivity</string>
-
+    <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="title_activity_abstract_create_account">AbstractCreateAccountActivity</string>
+    <string name="title_activity_create_account_success">CreateAccountSuccessActivity</string>
+    <string name="my_account">My Account</string>
 </resources>

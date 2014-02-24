@@ -38,6 +38,7 @@ public class LoginActivity extends AbstractLoginActivity {
 
         usernameField =  (EditText) findViewById(R.id.login_username);
         passwordField =  (EditText) findViewById(R.id.login_password);
+        
     }
     
 
@@ -59,6 +60,6 @@ public class LoginActivity extends AbstractLoginActivity {
     }
     
     public void attemptLogin(View view) {
-        listener.loginSuccess();
+        listener.attemptLogin();
     }
 }

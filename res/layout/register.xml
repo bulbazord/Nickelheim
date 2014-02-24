@@ -55,10 +55,9 @@
         android:layout_below="@+id/register_username_field"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPassword" >
+        android:inputType="textPassword" />
 
-        <requestFocus />
-    </EditText>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -87,6 +86,9 @@
         android:layout_below="@+id/register_email_field"
         android:ems="10"
         android:hint="@string/userName"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName" >
+        
+        <requestFocus />
+        </EditText>
 
 </RelativeLayout>

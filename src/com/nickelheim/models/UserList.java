@@ -3,7 +3,7 @@ package com.nickelheim.models;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserList implements Model {
+public class UserList implements UserModel {
     private static UserList instance;
     private Map<String, User> userList;
     
