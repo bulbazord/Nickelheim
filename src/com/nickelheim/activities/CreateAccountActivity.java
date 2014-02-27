@@ -11,6 +11,14 @@ import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.RegisterButtonListener;
 import com.nickelheim.views.AbstractCreateAccountActivity;
 
+/**
+ * An <code>Activity</code> responsible for Account creation.
+ *
+ * Contains fields for user information, and a button that the user can press
+ * to attempt to create an account.
+ *
+ * @author Nickeclheim
+ */
 public class CreateAccountActivity extends AbstractCreateAccountActivity {
     private CreateAccountButtonListener listener;
     private EditText firstNameField;
@@ -23,12 +31,17 @@ public class CreateAccountActivity extends AbstractCreateAccountActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         
-        firstNameField =  (EditText) findViewById(R.id.create_account_first_name_field);
-        lastNameField =  (EditText) findViewById(R.id.create_account_last_name_field);
-        emailField = (EditText) findViewById(R.id.create_account_email_field);
-        username =this.getIntent().getExtras().getString(RegisterButtonListener.USERNAME);
+        firstNameField =  (EditText) findViewById(
+                                        R.id.create_account_first_name_field);
+        lastNameField =  (EditText) findViewById(
+                                        R.id.create_account_last_name_field);
+        emailField = (EditText) findViewById(
+                                        R.id.create_account_email_field);
+        username =this.getIntent().getExtras().getString(
+                                        RegisterButtonListener.USERNAME);
         
-        listener = new CreateAccountButtonListener(this, this, new AccountList());
+        listener = new CreateAccountButtonListener(this, this,
+                                                   new AccountList());
     }
     
     @Override
@@ -50,7 +63,8 @@ public class CreateAccountActivity extends AbstractCreateAccountActivity {
     public String getEmail() {
         return emailField.getText().toString();
     }
-    
+
+    @Override
     public void attemptCreateAccount(View view) {
         listener.attemptCreateAccount();
     }
