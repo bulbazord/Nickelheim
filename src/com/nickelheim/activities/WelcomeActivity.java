@@ -1,11 +1,12 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.nickelheim.R;
 import com.nickelheim.presenters.WelcomeButtonListener;
-import com.nickelheim.views.AbstractWelcomeActivity;
+import com.nickelheim.views.WelcomeActivityInterface;
 
 
 /**
@@ -16,7 +17,7 @@ import com.nickelheim.views.AbstractWelcomeActivity;
  * @author Nickelheim Group
  * @version 1.0
  */
-public class WelcomeActivity extends AbstractWelcomeActivity {
+public class WelcomeActivity extends Activity implements WelcomeActivityInterface {
     private WelcomeButtonListener listener;
 
 

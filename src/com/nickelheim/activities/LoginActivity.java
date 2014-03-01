@@ -1,5 +1,6 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -7,7 +8,7 @@ import android.widget.EditText;
 import com.nickelheim.R;
 import com.nickelheim.models.UserList;
 import com.nickelheim.presenters.LoginButtonListener;
-import com.nickelheim.views.AbstractLoginActivity;
+import com.nickelheim.views.LoginActivityInterface;
 
 
 /**
@@ -16,7 +17,7 @@ import com.nickelheim.views.AbstractLoginActivity;
  * @author Nickelheim Group
  * @version 1.0
  */
-public class LoginActivity extends AbstractLoginActivity {
+public class LoginActivity extends Activity implements LoginActivityInterface {
     private LoginButtonListener listener;
     private EditText usernameField;
     private EditText passwordField;

@@ -1,14 +1,8 @@
 package com.nickelheim.views;
 
-import android.app.Activity;
 import android.view.View;
 
-/**
- * Abstract class to be extended by CreateAccountActivity.java
- * 
- * @author Nickelheim
- */
-public abstract class AbstractCreateAccountActivity extends Activity  {
+public interface CreateAccountActivityInterface {
     /**
      * Returns the username of the user presently logged in.
      *
@@ -41,4 +35,3 @@ public abstract class AbstractCreateAccountActivity extends Activity  {
      */
     public abstract void attemptCreateAccount(View view);
 }
-

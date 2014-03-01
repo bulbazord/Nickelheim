@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.nickelheim.activities.CreateAccountActivity;
 import com.nickelheim.activities.CreateAccountSuccessActivity;
 import com.nickelheim.models.AccountList;
-import com.nickelheim.views.AbstractCreateAccountActivity;
 
 public class CreateAccountButtonListener {
     public static final String FIRSTNAME = "firstName";
     public static final String LASTNAME = "lastName";
     public static final String EMAIL = "email";
     private Context context;
-    private AbstractCreateAccountActivity view;
+    private CreateAccountActivity view;
     private AccountList model;
     
-    public CreateAccountButtonListener(AbstractCreateAccountActivity view, Context context, AccountList model) {
+    public CreateAccountButtonListener(CreateAccountActivity view, Context context, AccountList model) {
         this.view = view;
         this.model = model;
         this.context = context;

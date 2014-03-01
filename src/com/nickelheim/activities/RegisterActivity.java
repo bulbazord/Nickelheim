@@ -1,5 +1,6 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -8,9 +9,9 @@ import android.widget.EditText;
 import com.nickelheim.R;
 import com.nickelheim.models.UserList;
 import com.nickelheim.presenters.RegisterButtonListener;
-import com.nickelheim.views.AbstractRegisterActivity;
+import com.nickelheim.views.RegisterActivityInterface;
 
-public class RegisterActivity extends AbstractRegisterActivity {
+public class RegisterActivity extends Activity implements RegisterActivityInterface {
     private RegisterButtonListener listener;
     private EditText usernameField;
     private EditText passwordField;

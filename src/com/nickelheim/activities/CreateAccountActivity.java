@@ -1,5 +1,6 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -9,7 +10,7 @@ import com.nickelheim.R;
 import com.nickelheim.models.AccountList;
 import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.RegisterButtonListener;
-import com.nickelheim.views.AbstractCreateAccountActivity;
+import com.nickelheim.views.CreateAccountActivityInterface;
 
 /**
  * An <code>Activity</code> responsible for Account creation.
@@ -19,7 +20,7 @@ import com.nickelheim.views.AbstractCreateAccountActivity;
  *
  * @author Nickeclheim
  */
-public class CreateAccountActivity extends AbstractCreateAccountActivity {
+public class CreateAccountActivity extends Activity implements CreateAccountActivityInterface {
     private CreateAccountButtonListener listener;
     private EditText firstNameField;
     private EditText lastNameField;

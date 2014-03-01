@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.nickelheim.activities.CreateAccountActivity;
+import com.nickelheim.activities.RegisterActivity;
 import com.nickelheim.models.UserList;
-import com.nickelheim.views.AbstractRegisterActivity;
 
 public class RegisterButtonListener {
     public static final String USERNAME = "username";
     private Context context;
-    private AbstractRegisterActivity view;
+    private RegisterActivity view;
     private UserList model;
     
-    public RegisterButtonListener(AbstractRegisterActivity view, Context context, UserList model) {
+    public RegisterButtonListener(RegisterActivity view, Context context, UserList model) {
         this.view = view;
         this.model = model;
         this.context = context;

@@ -4,17 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.nickelheim.activities.LoginActivity;
 import com.nickelheim.activities.LoginSuccessActivity;
 import com.nickelheim.models.UserList;
-import com.nickelheim.views.AbstractLoginActivity;
 
 public class LoginButtonListener {
     public static final String USERNAME = "username";
     private Context context;
-    private AbstractLoginActivity view;
+    private LoginActivity view;
     private UserList model;
     
-    public LoginButtonListener(AbstractLoginActivity view, Context context, UserList model) {
+    public LoginButtonListener(LoginActivity view, Context context, UserList model) {
         this.view = view;
         this.model = model;
         this.context = context;
