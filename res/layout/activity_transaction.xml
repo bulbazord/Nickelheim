@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TransactionActivity" >
+
+    <Button
+        android:id="@+id/deposit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/balance"
+        android:layout_centerVertical="true"
+        android:onClick="attemptDeposit"
+        android:text="@string/deposit" />
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="@string/amount" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amount"
+        android:layout_below="@+id/deposit"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:hint="@string/balance" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deposit"
+        android:layout_alignLeft="@+id/deposit"
+        android:onClick="attemptWithdraw"
+        android:text="@string/withdraw" />
+
+</RelativeLayout>

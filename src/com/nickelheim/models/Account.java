@@ -15,6 +15,7 @@ public class Account {
     private String firstName;
     private String lastName;
     private String email;
+    private double balance;
     
     /**
      * Constructs an Account object, given identifying information about the
@@ -24,12 +25,14 @@ public class Account {
      * @param firstName
      * @param lastName
      * @param email
+     * @param balance
      */
-    public Account(String username, String firstName, String lastName, String email) {
+    public Account(String username, String firstName, String lastName, String email, double balance) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.balance = balance;
     }
 
     /**
@@ -42,7 +45,8 @@ public class Account {
     @Override
     public String toString() {
         return "username: " + username + " first name: " + firstName 
-                + " last name: " + lastName + " email: " + email;
+                + " last name: " + lastName + " email: " + email 
+                + " balance: " + balance;
     }
     
     /**
@@ -79,6 +83,18 @@ public class Account {
      */
     public String getEmail() {
         return email;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+    
+    public void withdraw(double amount) {
+    	this.balance -= amount;
+    }
+    
+    public void deposit(double amount) {
+    	this.balance += amount;
     }
 
 }

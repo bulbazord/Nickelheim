@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.nickelheim.activities.CreateAccountActivity;
+import com.nickelheim.activities.LoginSuccessActivity;
 import com.nickelheim.activities.RegisterActivity;
 import com.nickelheim.models.UserList;
 
@@ -26,7 +26,7 @@ public class RegisterButtonListener {
         String password = view.getPassword();
         boolean isValidRegistration = model.isValidRegistration(username, password);
         if(isValidRegistration) {
-            Intent intent  = new Intent(view, CreateAccountActivity.class);
+            Intent intent  = new Intent(view, LoginSuccessActivity.class);
             intent.putExtra(USERNAME, username);
             view.startActivity(intent);
         } else {

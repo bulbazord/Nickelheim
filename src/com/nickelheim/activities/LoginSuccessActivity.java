@@ -8,8 +8,9 @@ import android.view.View;
 
 import com.nickelheim.R;
 import com.nickelheim.presenters.LoginButtonListener;
+import com.nickelheim.views.LoginSuccessActivityInterface;
 
-public class LoginSuccessActivity extends Activity {
+public class LoginSuccessActivity extends Activity implements LoginSuccessActivityInterface {
     public static final String USERNAME = "username";
 
     @Override
@@ -24,13 +25,20 @@ public class LoginSuccessActivity extends Activity {
         getMenuInflater().inflate(R.menu.login_success, menu);
         return true;
     }
-    
+    @Override
     public void createAccount(View view) {
         
         Intent intent  = new Intent(this, CreateAccountActivity.class);
         String username = this.getIntent().getExtras().getString(LoginButtonListener.USERNAME);
         intent.putExtra(USERNAME, username);
         startActivity(intent);
+    }
+    
+    public void showAccount(View view) {
+    	Intent intent = new Intent(this, CreateAccountSuccessActivity.class);
+    	String username = this.getIntent().getExtras().getString(LoginButtonListener.USERNAME);
+    	intent.putExtra(USERNAME, username);
+    	startActivity(intent);
     }
 
 }

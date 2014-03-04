@@ -1,40 +1,67 @@
 package com.nickelheim.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.TextView;
 
 import com.nickelheim.R;
+import com.nickelheim.models.Account;
+import com.nickelheim.models.AccountList;
 import com.nickelheim.presenters.CreateAccountButtonListener;
 
 public class CreateAccountSuccessActivity extends Activity {
+	AccountList accountList = AccountList.getInstance();
+	public static final String USERNAME = "username";
+	public String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_success);
         
-        String firstName = this.getIntent().getExtras().getString(CreateAccountButtonListener.FIRSTNAME);
-        String lastName = this.getIntent().getExtras().getString(CreateAccountButtonListener.LASTNAME);
-        String email = this.getIntent().getExtras().getString(CreateAccountButtonListener.EMAIL);
+        username = this.getIntent().getExtras().getString(CreateAccountButtonListener.USERNAME);
+        //String firstName = this.getIntent().getExtras().getString(CreateAccountButtonListener.FIRSTNAME);
+        //String lastName = this.getIntent().getExtras().getString(CreateAccountButtonListener.LASTNAME);
+        //String email = this.getIntent().getExtras().getString(CreateAccountButtonListener.EMAIL);
+        //double balance = this.getIntent().getExtras().getDouble(CreateAccountButtonListener.BALANCE);
         
-        EditText firstNameField =  (EditText) findViewById(R.id.create_account_success_first_name_field);
-        EditText lastNameField =  (EditText) findViewById(R.id.create_account_success_lastname_field);
-        EditText emailField = (EditText) findViewById(R.id.create_account_success_email_field);
+        Account account = accountList.findAccount(username);
         
-        firstNameField.setText(firstName);
-        lastNameField.setText(lastName);
-        emailField.setText(email);
+        TextView firstNameField =  (TextView) findViewById(R.id.create_account_success_first_name_field);
+        TextView lastNameField =  (TextView) findViewById(R.id.create_account_success_lastname_field);
+        TextView emailField = (TextView) findViewById(R.id.create_account_success_email_field);
+        TextView balanceField = (TextView) findViewById(R.id.create_account_success_balance);
+        
+        if (account != null) {
+        	firstNameField.setText(account.getFirstName());
+            lastNameField.setText(account.getLastName());
+            emailField.setText(account.getEmail());
+            
+            String balanceToString = Double.toString(account.getBalance());
+            balanceField.setText(balanceToString);	
+		} else {
+			firstNameField.setText("None");
+			lastNameField.setText("None");
+			emailField.setText("None");
+			balanceField.setText("None");
+		}
+        
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.creat_account_success, menu);
+        getMenuInflater().inflate(R.menu.create_account_success, menu);
         return true;
     }
     
-
-
+    public void startTransaction(View view) {
+    	Intent intent  = new Intent(this, TransactionActivity.class);
+    	intent.putExtra(USERNAME, username);
+        startActivity(intent);
+    }
+    
 }

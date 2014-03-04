@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="withdraw">Withdraw</string>
+	<string name="deposit">Deposit</string>
     <string name="welcome">Welcome to Nickelheim!</string>
     <string name="register">Register</string>
     <string name="create_account">Create Account</string>
+    <string name="view_account">View Account</string>
     <string name="login">Login</string>
     <string name="userName">User Name:</string>
     <string name="firstName">First Name</string>
@@ -37,4 +39,9 @@
     <string name="title_activity_abstract_create_account">AbstractCreateAccountActivity</string>
     <string name="title_activity_create_account_success">CreateAccountSuccessActivity</string>
     <string name="my_account">My Account</string>
+    <string name="balance">Balance</string>
+    <string name="transaction">Transaction</string>
+    <string name="title_activity_transaction">TransactionActivity</string>
+    <string name="amount">Amount</string>
+
 </resources>

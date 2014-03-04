@@ -25,6 +25,7 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText emailField;
+    private EditText balanceField;
     private String username;
     
     @Override
@@ -38,11 +39,14 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
                                         R.id.create_account_last_name_field);
         emailField = (EditText) findViewById(
                                         R.id.create_account_email_field);
+        balanceField = (EditText) findViewById(
+                R.id.create_account_balance_field);
+        
         username =this.getIntent().getExtras().getString(
                                         RegisterButtonListener.USERNAME);
         
         listener = new CreateAccountButtonListener(this, this,
-                                                   new AccountList());
+                                                   AccountList.getInstance());
     }
     
     @Override
@@ -63,6 +67,11 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
     @Override
     public String getEmail() {
         return emailField.getText().toString();
+    }
+    
+    @Override
+    public double getBalance() {
+        return Double.valueOf(balanceField.getText().toString());
     }
 
     @Override
