@@ -36,8 +36,10 @@ public class TransactionActivity extends Activity
         amountField =  (EditText) findViewById(R.id.amount);
         
         balanceField = (TextView) findViewById(R.id.balance);
-        String balanceToString = Double.toString(account.getBalance());
-        balanceField.setText(balanceToString);
+        
+        updateBalanceField();
+        //String balanceToString = Double.toString(account.getBalance());
+        //balanceField.setText(balanceToString);
 	}
 
 	@Override
@@ -68,8 +70,8 @@ public class TransactionActivity extends Activity
 	}
 	
 	public void updateBalanceField() {
-        String balanceToString = Double.toString(account.getBalance());
-        balanceField.setText(balanceToString);
+		String balanceToString = Double.toString(account.getBalance());
+		balanceField.setText(balanceToString);	
 	}
 
 }

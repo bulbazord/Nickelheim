@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.nickelheim.R;
@@ -34,6 +35,7 @@ public class CreateAccountSuccessActivity extends Activity {
         TextView lastNameField =  (TextView) findViewById(R.id.create_account_success_lastname_field);
         TextView emailField = (TextView) findViewById(R.id.create_account_success_email_field);
         TextView balanceField = (TextView) findViewById(R.id.create_account_success_balance);
+        Button transaction = (Button) findViewById(R.id.transaction);
         
         if (account != null) {
         	firstNameField.setText(account.getFirstName());
@@ -43,10 +45,11 @@ public class CreateAccountSuccessActivity extends Activity {
             String balanceToString = Double.toString(account.getBalance());
             balanceField.setText(balanceToString);	
 		} else {
-			firstNameField.setText("None");
-			lastNameField.setText("None");
-			emailField.setText("None");
-			balanceField.setText("None");
+			firstNameField.setText("Empty");
+			lastNameField.setText("Empty");
+			emailField.setText("Empty");
+			balanceField.setText("Empty");
+			transaction.setVisibility(View.GONE);
 		}
         
     }
