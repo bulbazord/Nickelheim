@@ -1,7 +1,11 @@
 package com.nickelheim.models;
 
-public interface AccountsPerUserModel {
+import java.util.List;
+
+public interface AccountListModel {
     boolean isValidCreateAccount(final String accountName, final double
                                                                     balance);
-    //Account findAccount(final String username);
+    void addToList(Account account);
+    List<Account> getList();
+    Account getAccountByName(String accountName);
 }

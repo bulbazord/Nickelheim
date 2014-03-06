@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.nickelheim.R;
 import com.nickelheim.models.Account;
-import com.nickelheim.models.AccountsPerUserList;
+import com.nickelheim.models.AccountList;
 
 public class CreateAccountSuccessActivity extends Activity {
     
@@ -28,12 +28,12 @@ public class CreateAccountSuccessActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_success);
         
-        List<Account> accountsPerUserList = 
-                                    AccountsPerUserList.getInstance().getList();
+        List<Account> accountList = 
+                                    AccountList.getInstance().getList();
         
         ArrayList<String> accountNames = new ArrayList<String>();
         
-        for (Account account : accountsPerUserList) {
+        for (Account account : accountList) {
             accountNames.add(account.getAccountName());
         }
              
@@ -54,11 +54,7 @@ public class CreateAccountSuccessActivity extends Activity {
                                                     TransactionActivity.class);
                 String accountName = ((TextView) view).getText().toString();
                 intent.putExtra(ACCOUNT_NAME, accountName);
-                startActivity(intent);
-                
-                
-                //Toast.makeText(getApplicationContext(), 
-                        //((TextView) view).getText(), Toast.LENGTH_SHORT).show();  
+                startActivity(intent); 
             }
         });
     }

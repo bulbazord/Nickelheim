@@ -9,7 +9,7 @@
     tools:context=".CreateAccountActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/account_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -30,21 +30,20 @@
         android:id="@+id/create_account_account_name_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="94dp"
+        android:layout_alignLeft="@+id/account_name"
+        android:layout_below="@+id/account_name"
+        android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="@string/accountName"
-        android:inputType="textPersonName" >
-        <requestFocus />
-    </EditText>
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/create_account_balance_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/create_account_account_name_field"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/create_account_account_name_field"
+        android:layout_marginTop="19dp"
         android:ems="10"
         android:hint="@string/balance"
         android:inputType="numberDecimal" />

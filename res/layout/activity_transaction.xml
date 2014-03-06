@@ -17,12 +17,33 @@
         android:onClick="attemptDeposit"
         android:text="@string/deposit" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deposit"
+        android:layout_alignLeft="@+id/deposit"
+        android:onClick="attemptWithdraw"
+        android:text="@string/withdraw" />
+
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="TextView" />
+
     <EditText
         android:id="@+id/amount"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/account_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/amount"
         android:inputType="numberDecimal" >
 
@@ -34,17 +55,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/amount"
-        android:layout_below="@+id/deposit"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/amount"
+        android:layout_marginTop="19dp"
         android:gravity="center"
         android:hint="@string/balance" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/deposit"
-        android:layout_alignLeft="@+id/deposit"
-        android:onClick="attemptWithdraw"
-        android:text="@string/withdraw" />
 
 </RelativeLayout>

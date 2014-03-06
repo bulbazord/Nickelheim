@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.nickelheim.R;
 import com.nickelheim.models.Account;
 import com.nickelheim.models.AccountList;
-import com.nickelheim.models.AccountsPerUserList;
 import com.nickelheim.models.TransactionList;
 import com.nickelheim.presenters.TransactionButtonListener;
 import com.nickelheim.views.TransactionActivityInterface;
@@ -20,9 +19,9 @@ import com.nickelheim.views.TransactionActivityInterface;
 public class TransactionActivity extends Activity
 							implements TransactionActivityInterface {
 	private TransactionButtonListener listener;
+	private TextView accountNameField;
     private EditText amountField;
     private TextView balanceField;
-    private AccountList accountList;
     private Account account;
     
     @Override
@@ -35,20 +34,14 @@ public class TransactionActivity extends Activity
         amountField =  (EditText) findViewById(R.id.amount);
         
         balanceField = (TextView) findViewById(R.id.balance);
+        accountNameField = (TextView) findViewById(R.id.account_name);
         
         String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME);
-        account = AccountsPerUserList.getInstance().getAccountByName(accountName);
+        account = AccountList.getInstance().getAccountByName(accountName);
         
-        
-        
+        accountNameField.setText(accountName);
         
         updateBalanceField();
-        
-        //String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME); 
-        
-        //account = AccountsPerUserList.getInstance().getAccountByIndex(0);
-        //System.out.println(account.getAccountName());
-        //System.out.println(account.getBalance());
 	}
 
 	@Override
@@ -76,7 +69,6 @@ public class TransactionActivity extends Activity
 	public void attemptDeposit(View view) {
 		listener.attemptDeposit();
 	}
-	
 	
 	public void updateBalanceField() {
 	    NumberFormat format = NumberFormat.getCurrencyInstance();

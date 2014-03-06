@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
-import com.nickelheim.models.AccountsPerUserList;
+import com.nickelheim.models.AccountList;
 import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.RegisterButtonListener;
 import com.nickelheim.views.CreateAccountActivityInterface;
@@ -40,7 +40,7 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
                                         RegisterButtonListener.USERNAME);
         
         listener = new CreateAccountButtonListener(this, this,
-                                               AccountsPerUserList.getInstance());
+                                               AccountList.getInstance());
     }
     
     @Override
