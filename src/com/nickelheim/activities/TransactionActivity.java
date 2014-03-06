@@ -1,5 +1,7 @@
 package com.nickelheim.activities;
 
+import java.text.NumberFormat;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.nickelheim.R;
 import com.nickelheim.models.Account;
 import com.nickelheim.models.AccountList;
+import com.nickelheim.models.AccountsPerUserList;
 import com.nickelheim.models.TransactionList;
 import com.nickelheim.presenters.TransactionButtonListener;
 import com.nickelheim.views.TransactionActivityInterface;
@@ -29,17 +32,23 @@ public class TransactionActivity extends Activity
 		
 		listener = new TransactionButtonListener(this, this, TransactionList.getInstance());
 		
-		String username = getUsername();
-		accountList = AccountList.getInstance();
-		account = accountList.findAccount(username);
-		
         amountField =  (EditText) findViewById(R.id.amount);
         
         balanceField = (TextView) findViewById(R.id.balance);
         
+        String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME);
+        account = AccountsPerUserList.getInstance().getAccountByName(accountName);
+        
+        
+        
+        
         updateBalanceField();
-        //String balanceToString = Double.toString(account.getBalance());
-        //balanceField.setText(balanceToString);
+        
+        //String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME); 
+        
+        //account = AccountsPerUserList.getInstance().getAccountByIndex(0);
+        //System.out.println(account.getAccountName());
+        //System.out.println(account.getBalance());
 	}
 
 	@Override
@@ -54,6 +63,10 @@ public class TransactionActivity extends Activity
         return Double.valueOf(amountField.getText().toString());
     }
 	
+	public Account getAccount() {
+	    return account;
+	}
+	
 	@Override
 	public void attemptWithdraw(View view) {
         listener.attemptWithdraw();
@@ -64,14 +77,10 @@ public class TransactionActivity extends Activity
 		listener.attemptDeposit();
 	}
 	
-	public String getUsername() {
-		String username = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.USERNAME);
-		return username;
-	}
 	
 	public void updateBalanceField() {
-		String balanceToString = Double.toString(account.getBalance());
-		balanceField.setText(balanceToString);	
+	    NumberFormat format = NumberFormat.getCurrencyInstance();
+		balanceField.setText(format.format(account.getBalance()));	
 	}
 
 }

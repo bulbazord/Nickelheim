@@ -7,11 +7,9 @@ package com.nickelheim.models;
  * @author Nickelheim
  */
 public interface AccountModel {
-    boolean isValidCreateAccount(final String username, final String firstName,
-                                 final String lastName, final String email,
-                                 final double balance);
-    void addAccount(final String username, final String firstName,
-                    final String lastName, final String email,
-                    final double balance);
+    boolean isValidCreateAccount(final String username,
+                                final String accountName, final double balance);
+    void addAccount(final String username, final String accountName,
+                                                        final double balance);
     Account findAccount(final String username);
 }

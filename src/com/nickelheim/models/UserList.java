@@ -71,7 +71,7 @@ public class UserList implements UserModel {
          
     }
     
-    //helper method to add User to the hashmap
+    
     @Override
     public void addUser(String username, String password) {
         userList.put(username, new User(username, password));

@@ -60,6 +60,10 @@
             android:name="com.nickelheim.activities.TransactionActivity"
             android:label="@string/title_activity_transaction" >
         </activity>
+        <activity
+            android:name="com.nickelheim.activities.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
     </application>
 
 </manifest>

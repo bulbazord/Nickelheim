@@ -1,57 +1,66 @@
 package com.nickelheim.activities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nickelheim.R;
 import com.nickelheim.models.Account;
-import com.nickelheim.models.AccountList;
-import com.nickelheim.presenters.CreateAccountButtonListener;
+import com.nickelheim.models.AccountsPerUserList;
 
 public class CreateAccountSuccessActivity extends Activity {
-	AccountList accountList = AccountList.getInstance();
-	public static final String USERNAME = "username";
-	public String username;
+    
+    public static final String ACCOUNT_NAME = "account name";
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_success);
         
-        username = this.getIntent().getExtras().getString(CreateAccountButtonListener.USERNAME);
-        //String firstName = this.getIntent().getExtras().getString(CreateAccountButtonListener.FIRSTNAME);
-        //String lastName = this.getIntent().getExtras().getString(CreateAccountButtonListener.LASTNAME);
-        //String email = this.getIntent().getExtras().getString(CreateAccountButtonListener.EMAIL);
-        //double balance = this.getIntent().getExtras().getDouble(CreateAccountButtonListener.BALANCE);
+        List<Account> accountsPerUserList = 
+                                    AccountsPerUserList.getInstance().getList();
         
-        Account account = accountList.findAccount(username);
+        ArrayList<String> accountNames = new ArrayList<String>();
         
-        TextView firstNameField =  (TextView) findViewById(R.id.create_account_success_first_name_field);
-        TextView lastNameField =  (TextView) findViewById(R.id.create_account_success_lastname_field);
-        TextView emailField = (TextView) findViewById(R.id.create_account_success_email_field);
-        TextView balanceField = (TextView) findViewById(R.id.create_account_success_balance);
-        Button transaction = (Button) findViewById(R.id.transaction);
+        for (Account account : accountsPerUserList) {
+            accountNames.add(account.getAccountName());
+        }
+             
+        ListView listView = (ListView)findViewById(R.id.list);
         
-        if (account != null) {
-        	firstNameField.setText(account.getFirstName());
-            lastNameField.setText(account.getLastName());
-            emailField.setText(account.getEmail());
-            
-            String balanceToString = Double.toString(account.getBalance());
-            balanceField.setText(balanceToString);	
-		} else {
-			firstNameField.setText("Empty");
-			lastNameField.setText("Empty");
-			emailField.setText("Empty");
-			balanceField.setText("Empty");
-			transaction.setVisibility(View.GONE);
-		}
-        
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1,
+                                                                accountNames);
+      
+      
+        // Assign adapter to ListView
+        listView.setAdapter(adapter); 
+                
+        listView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int postion, long id) {
+                Intent intent  = new Intent(getApplicationContext(),
+                                                    TransactionActivity.class);
+                String accountName = ((TextView) view).getText().toString();
+                intent.putExtra(ACCOUNT_NAME, accountName);
+                startActivity(intent);
+                
+                
+                //Toast.makeText(getApplicationContext(), 
+                        //((TextView) view).getText(), Toast.LENGTH_SHORT).show();  
+            }
+        });
     }
 
     @Override
@@ -61,10 +70,6 @@ public class CreateAccountSuccessActivity extends Activity {
         return true;
     }
     
-    public void startTransaction(View view) {
-    	Intent intent  = new Intent(this, TransactionActivity.class);
-    	intent.putExtra(USERNAME, username);
-        startActivity(intent);
-    }
+
     
 }

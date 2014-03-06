@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="withdraw">Withdraw</string>
-	<string name="deposit">Deposit</string>
+
+    <string name="withdraw">Withdraw</string>
+    <string name="deposit">Deposit</string>
     <string name="welcome">Welcome to Nickelheim!</string>
     <string name="register">Register</string>
     <string name="create_account">Create Account</string>
@@ -43,5 +44,7 @@
     <string name="transaction">Transaction</string>
     <string name="title_activity_transaction">TransactionActivity</string>
     <string name="amount">Amount</string>
+    <string name="accountName">Account Name</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

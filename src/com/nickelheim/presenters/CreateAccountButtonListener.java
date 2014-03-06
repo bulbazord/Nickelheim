@@ -6,42 +6,38 @@ import android.widget.Toast;
 
 import com.nickelheim.activities.CreateAccountActivity;
 import com.nickelheim.activities.CreateAccountSuccessActivity;
-import com.nickelheim.models.AccountList;
+import com.nickelheim.models.AccountsPerUserList;
 
 public class CreateAccountButtonListener {
 	public static final String USERNAME = "username";
-    public static final String FIRSTNAME = "firstName";
-    public static final String LASTNAME = "lastName";
-    public static final String EMAIL = "email";
+    public static final String ACCOUNTNAME = "accountName";
+    public static final String ACCOUNTTYPE = "accountType";
     public static final String BALANCE = "balance";
     private Context context;
     private CreateAccountActivity view;
-    private AccountList model;
+    private AccountsPerUserList model;
     
-    public CreateAccountButtonListener(CreateAccountActivity view, Context context, AccountList model) {
+    public CreateAccountButtonListener(CreateAccountActivity view,
+                                    Context context, AccountsPerUserList model) {
         this.view = view;
         this.model = model;
         this.context = context;
     }
      
     public void attemptCreateAccount() {
-        String username = view.getUsername();
-        String firstName = view.getFirstName();
-        String lastName = view.getLastName();
-        String email = view.getEmail();
+        String accountName = view.getAccountName();
         double balance = view.getBalance();
-        boolean isValidCreateAccount = model.isValidCreateAccount(username, firstName,
-                                        lastName, email, balance);
+        boolean isValidCreateAccount = model.isValidCreateAccount(accountName,
+                                                                    balance);
         if(isValidCreateAccount) {
-            Intent intent  = new Intent(view, CreateAccountSuccessActivity.class);
-            intent.putExtra(USERNAME, username);
-            //intent.putExtra(FIRSTNAME, firstName);
-            //intent.putExtra(LASTNAME, lastName);
-            ///intent.putExtra(EMAIL, email);
-            //intent.putExtra(BALANCE, balance);
+            //Toast.makeText(this.context, "Create account successful."
+            //                                        , Toast.LENGTH_LONG).show();
+            Intent intent  = new Intent(view,
+                                            CreateAccountSuccessActivity.class);
             view.startActivity(intent);
         } else {
-            Toast.makeText(this.context, "Create account not successful.  Try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.context, "Create account not successful."
+                                    + "  Try again.", Toast.LENGTH_LONG).show();
         }
 
     }

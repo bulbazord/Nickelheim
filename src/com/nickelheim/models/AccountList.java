@@ -4,18 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class stores all user accounts into a hashmap
- * and implements AccountModel
+ * This class stores all UserAccountsList into a hashmap
  * 
  * @author Nickelheim
  */
-public class AccountList implements AccountModel {
+public class AccountList {
 	private static AccountList instance;
-    private Map<String, Account> accountList;
+    private Map<String, AccountsPerUserList> accountList;
     
     //Constructor
     private AccountList() {
-        accountList = new HashMap<String, Account>();
+        accountList = new HashMap<String, AccountsPerUserList>();
     }
     
     public static AccountList getInstance() {
@@ -25,40 +24,36 @@ public class AccountList implements AccountModel {
         return instance;
     }
     
+    /**
     //Checks whether all fields have been filled out on the create account
     //page, and if so, calls addAccount method to store account into hashmap 
     @Override
     public boolean isValidCreateAccount(final String username,
-            final String firstName, final String lastName, final String email,
-            final double balance) {
+                            final String accountName, final String accountType,
+                                                        final double balance) {
         if (username.length() == 0) {
             return false;
         }
-        if (firstName.length() == 0) {
+        if (accountName.length() == 0) {
             return false;
         }
-        if (lastName.length() == 0) {
-            return false;
-        }
-        if (email.length() == 0) {
+        if (accountType.length() == 0) {
             return false;
         }
         if (balance == 0) {
             return false;
         }
-        addAccount(username, firstName, lastName, email, balance);
+        addAccount(username, accountName, accountType, balance);
         return true;
     }
     
-    //adds account containing username, firstName, lastName, and email to
-    //hashmap
-    @Override
-    public void addAccount(String username, String firstName, String lastName,
-    						String email, double balance) {
-        accountList.put(username, new Account(username, firstName, lastName, email, balance));
+    */
+
+    public void addAccountsPerUserList(String username) {
+        accountList.put(username, AccountsPerUserList.getInstance());
     }
     
-    public Account findAccount(String username) {
+    public AccountsPerUserList findUserAccountsList(String username) {
     	return accountList.get(username);
     }
     

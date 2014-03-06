@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
-import com.nickelheim.models.AccountList;
+import com.nickelheim.models.AccountsPerUserList;
 import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.RegisterButtonListener;
 import com.nickelheim.views.CreateAccountActivityInterface;
@@ -22,9 +22,7 @@ import com.nickelheim.views.CreateAccountActivityInterface;
  */
 public class CreateAccountActivity extends Activity implements CreateAccountActivityInterface {
     private CreateAccountButtonListener listener;
-    private EditText firstNameField;
-    private EditText lastNameField;
-    private EditText emailField;
+    private EditText accountNameField;
     private EditText balanceField;
     private String username;
     
@@ -33,12 +31,8 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         
-        firstNameField =  (EditText) findViewById(
-                                        R.id.create_account_first_name_field);
-        lastNameField =  (EditText) findViewById(
-                                        R.id.create_account_last_name_field);
-        emailField = (EditText) findViewById(
-                                        R.id.create_account_email_field);
+        accountNameField =  (EditText) findViewById(
+                                        R.id.create_account_account_name_field);
         balanceField = (EditText) findViewById(
                 R.id.create_account_balance_field);
         
@@ -46,7 +40,7 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
                                         RegisterButtonListener.USERNAME);
         
         listener = new CreateAccountButtonListener(this, this,
-                                                   AccountList.getInstance());
+                                               AccountsPerUserList.getInstance());
     }
     
     @Override
@@ -55,20 +49,10 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
     }
     
     @Override
-    public String getFirstName() {
-        return firstNameField.getText().toString();
+    public String getAccountName() {
+        return accountNameField.getText().toString();
     }
 
-    @Override
-    public String getLastName() {
-        return lastNameField.getText().toString();
-    }
-    
-    @Override
-    public String getEmail() {
-        return emailField.getText().toString();
-    }
-    
     @Override
     public double getBalance() {
         return Double.valueOf(balanceField.getText().toString());

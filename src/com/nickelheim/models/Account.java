@@ -11,10 +11,7 @@ package com.nickelheim.models;
  * @author aphivantrakul
  */
 public class Account {
-    private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private String accountName;
     private double balance;
     
     /**
@@ -22,16 +19,11 @@ public class Account {
      * corresponding user.
      *
      * @param username
-     * @param firstName
-     * @param lastName
-     * @param email
+     * @param accountName
      * @param balance
      */
-    public Account(String username, String firstName, String lastName, String email, double balance) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Account(String accountName, double balance) {
+        this.accountName = accountName;
         this.balance = balance;
     }
 
@@ -44,45 +36,17 @@ public class Account {
      */
     @Override
     public String toString() {
-        return "username: " + username + " first name: " + firstName 
-                + " last name: " + lastName + " email: " + email 
-                + " balance: " + balance;
+        return " account name: " + accountName + " balance: " + balance;
     }
     
-    /**
-     * Returns the username of the user who owns this account.
-     *
-     * @return String the username
-     */
-    public String getUsername() {
-        return username;
-    }
     
     /**
      * Returns the first name of the user who owns this account.
      *
      * @return String the user's name
      */
-    public String getFirstName() {
-        return firstName;
-    }
-    
-    /**
-     * Returns the last name of the user who owns this account.
-     *
-     * @return String the last name
-     */
-    public String getLastName() {
-        return lastName;
-    }
-    
-    /**
-     * Returns the email of the user who owns this account.
-     *
-     * @return String the email
-     */
-    public String getEmail() {
-        return email;
+    public String getAccountName() {
+        return accountName;
     }
     
     public double getBalance() {

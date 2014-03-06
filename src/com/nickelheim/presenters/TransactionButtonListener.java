@@ -26,10 +26,8 @@ public class TransactionButtonListener {
     }
     
     public void attemptWithdraw() {
-        String username = view.getUsername();
-        account = accountList.findAccount(username);
     	double amount = view.getAmount();
-        boolean isValidWithdraw = model.isValidWithdraw(account, amount);
+        boolean isValidWithdraw = model.isValidWithdraw(view.getAccount(), amount);
         if(isValidWithdraw) {
         	view.updateBalanceField();
         	Toast.makeText(this.context, "Withdraw successful.", Toast.LENGTH_LONG).show();
@@ -40,10 +38,8 @@ public class TransactionButtonListener {
     }
     
     public void attemptDeposit() {
-    	String username = view.getUsername();
-        account = accountList.findAccount(username);
     	double amount = view.getAmount();
-        boolean isValidDeposit = model.isValidDeposit(account, amount);
+        boolean isValidDeposit = model.isValidDeposit(view.getAccount(), amount);
         if(isValidDeposit) {
         	view.updateBalanceField();
         	Toast.makeText(this.context, "Deposit successful.", Toast.LENGTH_LONG).show();

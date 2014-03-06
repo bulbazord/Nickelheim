@@ -10,23 +10,12 @@ public interface CreateAccountActivityInterface {
      */
     public String getUsername();
     /**
-     * Returns the first name input by the user.
+     * Returns the account name input by the user.
      *
-     * @return String the name
+     * @return String the account name
      */
-    public String getFirstName();
-    /**
-     * Returns the last name input by the user.
-     *
-     * @return the name
-     */
-    public String getLastName();
-    /**
-     * Returns the email address input by the user.
-     *
-     * @return the email
-     */
-    public String getEmail();
+    public String getAccountName();
+
     
     public double getBalance();
     /**
