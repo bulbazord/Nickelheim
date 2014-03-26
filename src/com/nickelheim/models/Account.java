@@ -36,7 +36,7 @@ public class Account {
      */
     @Override
     public String toString() {
-        return " account name: " + accountName + " balance: " + balance;
+        return "Account Name: " + accountName + "\n" + "Balance: " + balance;
     }
     
     
@@ -45,7 +45,7 @@ public class Account {
      *
      * @return String the user's name
      */
-    public String getAccountName() {
+    public String getName() {
         return accountName;
     }
     

@@ -34,7 +34,7 @@ public class CreateAccountSuccessActivity extends Activity {
         ArrayList<String> accountNames = new ArrayList<String>();
         
         for (Account account : accountList) {
-            accountNames.add(account.getAccountName());
+            accountNames.add(account.getName());
         }
              
         ListView listView = (ListView)findViewById(R.id.list);
@@ -42,7 +42,6 @@ public class CreateAccountSuccessActivity extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1,
                                                                 accountNames);
-      
       
         // Assign adapter to ListView
         listView.setAdapter(adapter); 
@@ -66,6 +65,10 @@ public class CreateAccountSuccessActivity extends Activity {
         return true;
     }
     
+    public void viewReport(View view) {
+        Intent intent  = new Intent(this, CreateReportActivity.class);
+        startActivity(intent);
+    }
 
     
 }

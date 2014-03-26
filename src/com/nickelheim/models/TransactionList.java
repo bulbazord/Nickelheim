@@ -1,14 +1,14 @@
 package com.nickelheim.models;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransactionList implements TransactionModel {
 	private static TransactionList instance;
-	private Map<Account, Transaction> transactionList;
+	private List<Transaction> transactionList;
 		
 	private TransactionList() {
-		transactionList = new HashMap<Account, Transaction>();
+		transactionList = new ArrayList<Transaction>();
 	}
 	
 	public static TransactionList getInstance() {
@@ -18,7 +18,7 @@ public class TransactionList implements TransactionModel {
         return instance;
     }
 	
-	public boolean isValidWithdraw(Account account, double amount) {
+	public boolean isValidWithdraw(Account account, double amount, long timestamp, String comment) {
 		if (amount <= 0) {
 			return false;
 		} 
@@ -29,13 +29,13 @@ public class TransactionList implements TransactionModel {
 			account.withdraw(amount);
 			boolean withdraw = true;
 			boolean deposit = false;
-			addTransaction(account, amount, withdraw, deposit);
+			addTransaction(account, amount, withdraw, deposit, timestamp, comment);
 			return true;	
 		}
 	
 	}
 	
-	public boolean isValidDeposit(Account account, double amount) {
+	public boolean isValidDeposit(Account account, double amount, long timestamp, String comment) {
 		if (amount <= 0) {
 			return false;
 		} 
@@ -43,16 +43,19 @@ public class TransactionList implements TransactionModel {
 			account.deposit(amount);
 			boolean deposit = true;
 			boolean withdraw = false;
-			addTransaction(account, amount, withdraw, deposit);
+			addTransaction(account, amount, withdraw, deposit, timestamp, comment);
 			return true;	
 		}
 	
 	}
-	public void addTransaction(Account account, double amount, boolean withdraw, boolean deposit) {
-		transactionList.put(account, new Transaction(account, amount, withdraw, deposit));
+	public void addTransaction(Account account, double amount, boolean withdraw,
+                            boolean deposit, long timestamp, String comment) {
+		transactionList.add(new Transaction(account, amount, withdraw,
+                                                  deposit, timestamp, comment));
 	}
 		
-	
-	
+	public List<Transaction> getList() {
+	    return transactionList;
+	}
 	
 }

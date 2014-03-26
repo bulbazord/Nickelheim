@@ -43,7 +43,7 @@ public class WelcomeActivity extends Activity implements WelcomeActivityInterfac
      * @param View standard argument for button-tied method
      */
     public void startLogin(View view) {
-	listener.beginLogin();
+        listener.beginLogin();
     }
 
     /**
@@ -53,6 +53,6 @@ public class WelcomeActivity extends Activity implements WelcomeActivityInterfac
      * @param View standard argument for button-tied method
      */
     public void startRegister(View view) {
-	listener.beginRegister();
+        listener.beginRegister();
     }
 }

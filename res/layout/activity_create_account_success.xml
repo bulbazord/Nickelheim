@@ -9,10 +9,19 @@
     android:orientation="vertical"
     tools:context=".CreateAccountSuccessActivity" >
 
-   <ListView 
+   <ListView
        android:id="@+id/list"
        android:layout_width="wrap_content"
-       android:layout_height="fill_parent"/>
+       android:layout_height="354dp" />
+   
+   <Button 
+       android:id="@+id/view_report"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:text="@string/view_report"
+       android:onClick="viewReport"
+       />
 
 </LinearLayout>
 

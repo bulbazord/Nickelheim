@@ -64,6 +64,18 @@
             android:name="com.nickelheim.activities.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="com.nickelheim.activities.CreateReportActivity"
+            android:label="@string/title_activity_report" >
+        </activity>
+        <activity
+            android:name="com.nickelheim.activities.CreateReportActivity"
+            android:label="@string/title_activity_report" >
+        </activity>
+        <activity
+            android:name="com.nickelheim.activities.CreateReportSuccessActivity"
+            android:label="@string/title_activity_create_report_success" >
+        </activity>
     </application>
 
 </manifest>

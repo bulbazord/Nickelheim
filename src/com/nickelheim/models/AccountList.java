@@ -31,7 +31,7 @@ public class AccountList implements AccountListModel {
     @Override
     public Account getAccountByName(String accountName) {
         for (Account account : accountList) {
-            if (account.getAccountName().equals(accountName)) {
+            if (account.getName().equals(accountName)) {
                 return account;
             } 
         }

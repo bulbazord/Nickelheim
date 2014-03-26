@@ -23,6 +23,7 @@ public class TransactionActivity extends Activity
     private EditText amountField;
     private TextView balanceField;
     private Account account;
+    private EditText commentField;
     
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,9 @@ public class TransactionActivity extends Activity
 		listener = new TransactionButtonListener(this, this, TransactionList.getInstance());
 		
         amountField =  (EditText) findViewById(R.id.amount);
-        
         balanceField = (TextView) findViewById(R.id.balance);
         accountNameField = (TextView) findViewById(R.id.account_name);
+        commentField = (EditText) findViewById(R.id.comment);
         
         String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME);
         account = AccountList.getInstance().getAccountByName(accountName);
@@ -56,6 +57,14 @@ public class TransactionActivity extends Activity
         return Double.valueOf(amountField.getText().toString());
     }
 	
+	public String getComment() {
+	   String comment = commentField.getText().toString();
+	   if (comment == null || comment.length() == 0) {
+	       return "None";
+	   }
+	   return comment;
+	    
+	}
 	public Account getAccount() {
 	    return account;
 	}
