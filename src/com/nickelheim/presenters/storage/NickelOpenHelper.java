@@ -1,10 +1,13 @@
 package com.nickelheim.presenters.storage;
 
+import android.util.Log;
 import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import android.content.Context;
 import com.j256.ormlite.table.TableUtils;
 import com.j256.ormlite.support.ConnectionSource;
+import java.sql.SQLException;
+import com.nickelheim.models.User;
 
 /**
  * This class sets up the SQLite database in persistent phone memory.
@@ -49,7 +52,15 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
-        // Do some other stuff that follows the example on ormlite.com
+        try {
+            Log.i(NickelOpenHelper.class.getName(),
+                  "onCreate making User table");
+            TableUtils.createTable(connectionSource, User.class);
+        } catch (SQLException e) {
+            Log.e(NickelOpenHelper.class.getName(),
+                  "User table creation issue");
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -59,6 +70,15 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource cs,
                           int oldVersion, int newVersion) {
-        // Do some stuff
+        try {
+            Log.i(NickelOpenHelper.class.getName(),
+                  "onUpgrade droppin' tables");
+            TableUtils.dropTable(cs, User.class, true);
+            onCreate(db, cs);
+        } catch(SQLException e) {
+            Log.e(NickelOpenHelper.class.getName(),
+                  "Derp while droppin' tables");
+            throw new RuntimeException(e);
+        }
     }
 }
