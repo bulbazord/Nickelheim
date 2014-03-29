@@ -15,8 +15,6 @@ public class TransactionButtonListener {
     private TransactionActivity view;
     private TransactionList model;
     
-    
-    
     public TransactionButtonListener(TransactionActivity view, Context context,
     												TransactionList model) {
         this.view = view;
@@ -25,17 +23,13 @@ public class TransactionButtonListener {
     }
     
     public void attemptWithdraw() {
-        long timestamp = getTimeInMilliSeconds();
-        //String formattedDate = getFormattedDate();
-        
+        long timestamp = getTimeInMilliSeconds();        
     	double amount = view.getAmount();
     	String comment = view.getComment();
         boolean isValidWithdraw = model.isValidWithdraw(view.getAccount(), amount, timestamp, comment);
         if(isValidWithdraw) {
         	view.updateBalanceField();
         	Toast.makeText(this.context, "Withdraw successful.", Toast.LENGTH_SHORT).show();
-    	    //System.out.println("timestamp = " + timestamp); 
-    	    //System.out.println("formatted date = " + formattedDate);
         } else {
             Toast.makeText(this.context, "Withdraw not successful.  Try again.", Toast.LENGTH_SHORT).show();
         }
@@ -44,31 +38,19 @@ public class TransactionButtonListener {
     
     public void attemptDeposit() {
         long timestamp = getTimeInMilliSeconds();
-        //String formattedDate = getFormattedDate();
     	double amount = view.getAmount();
     	String comment = view.getComment();
         boolean isValidDeposit = model.isValidDeposit(view.getAccount(), amount, timestamp, comment);
         if(isValidDeposit) {
         	view.updateBalanceField();
         	Toast.makeText(this.context, "Deposit successful.", Toast.LENGTH_SHORT).show();
-        	//System.out.println("timestamp = " + timestamp); 
-        	//System.out.println("formatted date = " + formattedDate);
         } else {
             Toast.makeText(this.context, "Deposit not successful.  Try again.", Toast.LENGTH_SHORT).show();
         }
-
     }
     
     public long getTimeInMilliSeconds() {
         Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis();
-    }
-    
-    //public String getFormattedDate() {
-        //Calendar calendar = Calendar.getInstance();
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        //String formattedDate = dateFormat.format(calendar.getTime());
-        //return formattedDate;
-    //}
-    
+    }    
 }

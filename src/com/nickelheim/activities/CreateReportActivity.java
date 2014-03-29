@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
+import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.CreateReportButtonListener;
 import com.nickelheim.views.CreateReportActivityInterface;
 
@@ -15,12 +16,13 @@ public class CreateReportActivity extends Activity implements
     private CreateReportButtonListener listener;
     private EditText startDateField;
     private EditText endDateField;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_report);
-        
+        username = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.USERNAME);
         listener = new CreateReportButtonListener(this, this);
 
         startDateField =  (EditText) findViewById(R.id.start_date_input);
@@ -40,6 +42,10 @@ public class CreateReportActivity extends Activity implements
     
     public String getEndDate() {
         return endDateField.getText().toString();
+    }
+    
+    public String getUsername() {
+    	return username;
     }
     
     public void showReport(View view) {

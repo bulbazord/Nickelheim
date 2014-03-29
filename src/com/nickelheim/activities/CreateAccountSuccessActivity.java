@@ -17,19 +17,23 @@ import android.widget.TextView;
 import com.nickelheim.R;
 import com.nickelheim.models.Account;
 import com.nickelheim.models.AccountList;
+import com.nickelheim.presenters.CreateAccountButtonListener;
+import com.nickelheim.presenters.LoginButtonListener;
 
 public class CreateAccountSuccessActivity extends Activity {
     
     public static final String ACCOUNT_NAME = "account name";
-    
+    public static final String USERNAME = "username";
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_success);
+        username = this.getIntent().getExtras().getString(CreateAccountButtonListener.USERNAME);
         
         List<Account> accountList = 
-                                    AccountList.getInstance().getList();
+                                    AccountList.getInstance().getListByUsername(username);
         
         ArrayList<String> accountNames = new ArrayList<String>();
         
@@ -67,6 +71,7 @@ public class CreateAccountSuccessActivity extends Activity {
     
     public void viewReport(View view) {
         Intent intent  = new Intent(this, CreateReportActivity.class);
+        intent.putExtra(USERNAME, username);
         startActivity(intent);
     }
 

@@ -21,6 +21,7 @@ public class CreateReportSuccessActivity extends Activity {
     private TextView transactionField;
     private String startDate;
     private String endDate;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class CreateReportSuccessActivity extends Activity {
         endDate =this.getIntent().getExtras().getString(
                 CreateReportButtonListener.END_DATE);
         
+        username =this.getIntent().getExtras().getString(
+                CreateReportButtonListener.USERNAME);
+        
         long startTime = startDateToSeconds(startDate);
         //System.out.println("startTime = " + startTime);
         
@@ -43,7 +47,8 @@ public class CreateReportSuccessActivity extends Activity {
         transactionField =  (TextView) findViewById(R.id.transactions);
         transactionField.setMovementMethod(new ScrollingMovementMethod());
         for (Transaction transaction : transactionList) {
-            if((transaction.getTimestamp() >= startTime) && (transaction.getTimestamp() <= endTime)) {
+            if((transaction.getTimestamp() >= startTime) && (transaction.getTimestamp() <= endTime)
+            		&& (transaction.getAccountUsername().equals(username))) {
                 transactionField.append(transaction.toString() + "\n" + "\n");
             }
         }

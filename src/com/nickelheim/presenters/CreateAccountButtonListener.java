@@ -25,15 +25,17 @@ public class CreateAccountButtonListener {
     }
      
     public void attemptCreateAccount() {
+    	String username = view.getUsername();
         String accountName = view.getAccountName();
         double balance = view.getBalance();
-        boolean isValidCreateAccount = model.isValidCreateAccount(accountName,
+        boolean isValidCreateAccount = model.isValidCreateAccount(username, accountName,
                                                                     balance);
         if(isValidCreateAccount) {
             //Toast.makeText(this.context, "Create account successful."
             //                                        , Toast.LENGTH_LONG).show();
             Intent intent  = new Intent(view,
                                             CreateAccountSuccessActivity.class);
+            intent.putExtra(USERNAME, username);
             view.startActivity(intent);
         } else {
             Toast.makeText(this.context, "Create account not successful."

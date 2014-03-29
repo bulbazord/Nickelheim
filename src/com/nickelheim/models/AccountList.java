@@ -24,8 +24,14 @@ public class AccountList implements AccountListModel {
     }
     
     @Override
-    public List<Account> getList() {
-        return accountList;
+    public List<Account> getListByUsername(String username) {
+    	List<Account> accountListByUsername = new ArrayList<Account>();
+    	for (Account account : accountList) {
+			if(account.getUsername().equals(username)) {
+				accountListByUsername.add(account);
+			}
+		}
+    	return accountListByUsername;
     }
     
     @Override
@@ -41,7 +47,7 @@ public class AccountList implements AccountListModel {
     //Checks whether all fields have been filled out on the create account
     //page, and if so, adds account to userAccountsList
     @Override
-    public boolean isValidCreateAccount(final String accountName, final double
+    public boolean isValidCreateAccount(final String username, final String accountName, final double
                                                                     balance) {
         if (accountName.length() == 0) {
             return false;
@@ -49,7 +55,7 @@ public class AccountList implements AccountListModel {
         if (balance == 0) {
             return false;
         }
-            Account account = new Account(accountName, balance);
+            Account account = new Account(username, accountName, balance);
             addToList(account);        
             return true;
         }

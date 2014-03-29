@@ -11,6 +11,7 @@ package com.nickelheim.models;
  * @author aphivantrakul
  */
 public class Account {
+	private String username;
     private String accountName;
     private double balance;
     
@@ -22,8 +23,9 @@ public class Account {
      * @param accountName
      * @param balance
      */
-    public Account(String accountName, double balance) {
-        this.accountName = accountName;
+    public Account(String username, String accountName, double balance) {
+        this.username = username;
+    	this.accountName = accountName;
         this.balance = balance;
     }
 
@@ -47,6 +49,10 @@ public class Account {
      */
     public String getName() {
         return accountName;
+    }
+    
+    public String getUsername() {
+    	return username;
     }
     
     public double getBalance() {

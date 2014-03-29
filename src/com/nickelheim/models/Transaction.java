@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Transaction {
+	private String accountUsername;
 	private String accountName;
 	private double accountBalance;
 	private double amount;
@@ -14,6 +15,7 @@ public class Transaction {
 
 	public Transaction(Account account, double amount, boolean withdraw,
 						boolean deposit, long timestamp, String comment) {
+		this.accountUsername = account.getUsername();
 		this.accountName = account.getName();
 		this.accountBalance = account.getBalance();
 		this.amount = amount;
@@ -21,6 +23,9 @@ public class Transaction {
 		this.deposit = deposit;
 	    this.timestamp = timestamp;
 	    this.comment = comment;
+	}
+	public String getAccountUsername() {
+		return accountUsername;
 	}
 	
 	public double getAmount() {
