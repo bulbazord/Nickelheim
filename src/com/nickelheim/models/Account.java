@@ -1,5 +1,9 @@
 package com.nickelheim.models;
 
+import com.j256.ormlite.table.DatabaseTable;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+
 /**
  * Represents the account that a user creates after successful
  * login/registration.
@@ -10,11 +14,24 @@ package com.nickelheim.models;
  *
  * @author aphivantrakul
  */
+@DatabaseTable(tableName = "accounts")
 public class Account {
-	private String username;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private User user;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Portfolio portfolio;
+    @DatabaseField(id = true)
     private String accountName;
+    @DatabaseField
     private double balance;
     
+    /**
+     * No-arg constructor for ORMLite! DO NOT USE
+     */
+    Account() {
+
+    }
+
     /**
      * Constructs an Account object, given identifying information about the
      * corresponding user.
@@ -24,7 +41,7 @@ public class Account {
      * @param balance
      */
     public Account(String username, String accountName, double balance) {
-        this.username = username;
+        // this.username = username;
     	this.accountName = accountName;
         this.balance = balance;
     }
@@ -51,9 +68,9 @@ public class Account {
         return accountName;
     }
     
-    public String getUsername() {
-    	return username;
-    }
+    // public String getUsername() {
+    // 	return username;
+    // }
     
     public double getBalance() {
         return balance;
