@@ -29,7 +29,7 @@ public class Portfolio implements PortfolioModel {
     @DatabaseField(canBeNull = false, foreign = true)
     private User user;
     @DatabaseField(id = true)
-    private String porfolioName;
+    private String portfolioName;
 
     /**
      * For ORMLite! Don't use it for anything! Ignore errors about it!
@@ -51,7 +51,7 @@ public class Portfolio implements PortfolioModel {
      */
     public Portfolio(User user, String portName) {
         this.user = user;
-        this.porfolioName = portName;
+        this.portfolioName = portName;
         this.accounts = new ArrayList<Account>();
     }
 

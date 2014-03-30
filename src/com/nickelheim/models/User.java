@@ -67,7 +67,7 @@ public class User {
                 returnPortfolio = port;
             }
         }
-        return port;
+        return returnPortfolio;
     }
     
     /**

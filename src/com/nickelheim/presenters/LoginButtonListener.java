@@ -9,7 +9,10 @@ import com.nickelheim.activities.LoginSuccessActivity;
 import com.nickelheim.models.UserList;
 import android.os.AsyncTask;
 
+import com.nickelheim.models.User;
+
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.nickelheim.presenters.storage.NickelOpenHelper;
 
 public class LoginButtonListener {
