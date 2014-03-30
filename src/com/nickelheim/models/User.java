@@ -2,6 +2,7 @@ package com.nickelheim.models;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 /**
  * Class for User, which is created on the registration page
@@ -15,6 +16,10 @@ public class User {
     private String username;
     @DatabaseField
     private String password;
+
+    
+    @ForeignCollectionField(eager = true) //Will also need to set maxEagerLevel
+    private Collection<Portfolio> portfolios;
 
     /**
      * No-arg constructor required by ORMLite.
@@ -30,6 +35,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.porfolios = new ArrayList<Portfolio>();
     }
     //toString to print out instance variables in a pretty way
     //this method is not currently being used
@@ -45,5 +51,13 @@ public class User {
     //getter for password instance variable
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * This is bad encapsulation. Since you're lookin' at it, fix it.
+     * (I was in a hurry)
+     */
+    public Collection<Portfolio> getPortfolio() {
+        return portfolios;
     }
 }
