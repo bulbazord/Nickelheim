@@ -8,7 +8,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 import com.nickelheim.models.User;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.dao.Dao;
 
 /**
  * This class sets up the SQLite database in persistent phone memory.
@@ -35,7 +35,7 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
      * Data Access Objects, aka DAOs, are used to provide database functions for
      * a specific class.
      */
-    private RuntimeExceptionDao<User, String> userDao = null;
+    private Dao<User, String> userDao = null;
 
     /**
      * Obligatory constructor
@@ -97,9 +97,9 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
      *
      * @return RuntimeExceptionDao<User, String> the Dao
      */
-    public RuntimeExceptionDao<User, String> getUserDao() {
+    public Dao<User, String> getUserDao() throws SQLException{
         if(userDao == null) {
-            userDao = getRuntimeExceptionDao(User.class);
+            userDao = getDao(User.class);
         }
         return userDao;
     }

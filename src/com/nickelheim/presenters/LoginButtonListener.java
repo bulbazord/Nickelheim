@@ -12,8 +12,10 @@ import android.os.AsyncTask;
 import com.nickelheim.models.User;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.dao.Dao;
 import com.nickelheim.presenters.storage.NickelOpenHelper;
+
+import java.sql.SQLException;
 
 public class LoginButtonListener {
     public static final String USERNAME = "username";
@@ -48,14 +50,20 @@ public class LoginButtonListener {
 
     private class LoadUserTask extends AsyncTask<String, Void, User> {
         protected User doInBackground(String... usernameAndPassword) {
-            RuntimeExceptionDao<User, String> userDao =
-                getHelper().getUserDao();
-            User result = userDao.queryForId(usernameAndPassword[0]);
-            if(result == null
-               || !result.getPassword().equals(usernameAndPassword[1])) {
-                Toast.makeText(context, "Login not successful.  Try again.",
+            User result = null;
+            try {            
+                Dao<User, String> userDao = getHelper().getUserDao();
+                result = userDao.queryForId(usernameAndPassword[0]);
+                if(result == null
+                   || !result.getPassword().equals(usernameAndPassword[1])) {
+                    Toast.makeText(context, "Login not successful.  Try again.",
+                                   Toast.LENGTH_LONG).show();
+                    // Consider figuring out how to cancel the task?
+                }
+            } catch (SQLException e) {
+                Toast.makeText(context, "Login not successful.  SQLException.",
                                Toast.LENGTH_LONG).show();
-                // Consider figuring out how to cancel the task?
+                
             }
             return result;
         }
