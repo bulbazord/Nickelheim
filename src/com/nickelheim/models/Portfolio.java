@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Accounts.
  *
  * Portfolios are tied to a unique User, and should only be loaded when that
- * User is logged in. They porvide access to associated Accounts, which are
+ * User is logged in. They provide access to associated Accounts, which are
  * must have unique names in the Porfolio. The reason for this uniqueness
  * constraint is Database related. It is also for the most part to-be-coded.
  *
@@ -114,5 +114,14 @@ public class Portfolio implements PortfolioModel {
      */
     public Collection<Account> getAccounts() {
         return accounts;
+    }
+
+    /**
+     * Returns the name of the portfolio.
+     *
+     * @return Name of the portfolio.
+     */
+    public String getPortfolioName() {
+        return portfolioName;
     }
 }
