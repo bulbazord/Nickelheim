@@ -36,6 +36,8 @@ public class LoginButtonListener {
     public void attemptLogin() {
         String username = view.getUsername();
         String password = view.getPassword();
+        // Toast.makeText(context, "Login not successful.  Try again.",
+        //                Toast.LENGTH_LONG).show();
 
         new LoadUserTask().execute(username, password);
     }
@@ -49,6 +51,15 @@ public class LoginButtonListener {
     }
 
     private class LoadUserTask extends AsyncTask<String, Void, User> {
+
+        private String error;
+
+        protected void onPreExecute() {
+            Toast.makeText(context, "onPreExecute",
+                           Toast.LENGTH_LONG).show();
+            super.onPreExecute();
+        }
+
         protected User doInBackground(String... usernameAndPassword) {
             User result = null;
             try {            
@@ -56,14 +67,11 @@ public class LoginButtonListener {
                 result = userDao.queryForId(usernameAndPassword[0]);
                 if(result == null
                    || !result.getPassword().equals(usernameAndPassword[1])) {
-                    Toast.makeText(context, "Login not successful.  Try again.",
-                                   Toast.LENGTH_LONG).show();
-                    // Consider figuring out how to cancel the task?
+                    result = null;
                 }
-            } catch (SQLException e) {
-                Toast.makeText(context, "Login not successful.  SQLException.",
-                               Toast.LENGTH_LONG).show();
-                
+            } catch (Throwable e) {
+                result = null;
+                error = "Runtime ";
             }
             return result;
         }
@@ -74,6 +82,9 @@ public class LoginButtonListener {
                 intent.putExtra(USERNAME, user.getUsername());
                 loggedInUser = user;
                 view.startActivity(intent);
+            } else {
+                Toast.makeText(context, "issue",
+                               Toast.LENGTH_LONG).show();
             }
         }
     }
