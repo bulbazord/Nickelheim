@@ -8,6 +8,10 @@ import com.j256.ormlite.table.TableUtils;
 import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 import com.nickelheim.models.User;
+import com.nickelheim.models.Portfolio;
+import com.nickelheim.models.Account;
+import com.nickelheim.models.Transaction;
+
 import com.j256.ormlite.dao.Dao;
 
 /**
@@ -36,6 +40,10 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
      * a specific class.
      */
     private Dao<User, String> userDao = null;
+    private Dao<Portfolio, String> portfolioDao = null;
+    private Dao<Account, String> accountDao = null;
+    private Dao<Transaction, Long> transactionDao = null;
+
 
     /**
      * Obligatory constructor
@@ -60,8 +68,11 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
             Log.i(NickelOpenHelper.class.getName(),
-                  "onCreate making User table");
+                  "onCreate making tables");
             TableUtils.createTable(connectionSource, User.class);
+            TableUtils.createTable(connectionSource, Portfolio.class);
+            TableUtils.createTable(connectionSource, Account.class);
+            TableUtils.createTable(connectionSource, Transaction.class);
         } catch (SQLException e) {
             Log.e(NickelOpenHelper.class.getName(),
                   "User table creation issue");

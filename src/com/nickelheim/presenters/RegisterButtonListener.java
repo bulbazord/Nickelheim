@@ -58,7 +58,12 @@ public class RegisterButtonListener {
      */
     private class RegistrationTask extends AsyncTask<String, Void, User>
     {
-        private boolean userFound = false;
+        protected void onPreExecute() {
+            Toast.makeText(context,
+                           "Yo, fool.",
+                           Toast.LENGTH_LONG).show();
+            super.onPreExecute();
+        }
 
         protected User doInBackground(String... usernameAndPassword) {
             User result = null;
@@ -69,11 +74,9 @@ public class RegisterButtonListener {
                     result = new User(usernameAndPassword[0],
                                       usernameAndPassword[1]);
                     userDao.create(result); //stores in d/b
-                    userFound = false;
                 } else {
                     // inform the user that they suck
                     result = null;
-                    userFound = true;
                 }
             } catch(SQLException e) {
                 Log.e(RegistrationTask.class.getName(), "Can't query"
@@ -84,15 +87,19 @@ public class RegisterButtonListener {
         }
 
         protected void onPostExecute(User user) {
-            if(userFound) {
+            if(user == null) {
                 Toast.makeText(context,
                                "Register not successful.  Try again.",
                                Toast.LENGTH_LONG).show(); 
             } else {
-                LoginButtonListener.loggedInUser = user;
-                Intent intent = new Intent(view, LoginSuccessActivity.class);
-                intent.putExtra(USERNAME, user.getUsername());
-                view.startActivity(intent);
+                Toast.makeText(context,
+                               user.toString(),
+                               Toast.LENGTH_LONG).show(); 
+                
+                // LoginButtonListener.loggedInUser = user;
+                // Intent intent = new Intent(view, LoginSuccessActivity.class);
+                // intent.putExtra(USERNAME, user.getUsername());
+                // view.startActivity(intent);
             }
         }
     }

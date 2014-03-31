@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     
-    @ForeignCollectionField(eager = true) //Will also need to set maxEagerLevel
+    @ForeignCollectionField(eager = false) //Will also need to set maxEagerLevel
     private Collection<Portfolio> portfolios;
 
     /**

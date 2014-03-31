@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * @author matthugs
  * @version 1.0
  */
-@DatabaseTable(tableName = "porfolios")
+@DatabaseTable(tableName = "portfolios")
 public class Portfolio implements PortfolioModel {
 
     @ForeignCollectionField(eager = true)
