@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     
-    @ForeignCollectionField(eager = false) //Will also need to set maxEagerLevel
+    @ForeignCollectionField(eager = true) //Will also need to set maxEagerLevel
     private Collection<Portfolio> portfolios;
 
     /**
@@ -50,6 +50,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.portfolios = new ArrayList<Portfolio>();
+        addPortfolio(new Portfolio(this, "default"));
     }
 
     /**

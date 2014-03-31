@@ -55,8 +55,8 @@ public class AccountList implements AccountListModel {
         if (balance == 0) {
             return false;
         }
-            Account account = new Account(username, accountName, balance);
-            addToList(account);        
+        //            Account account = new Account(username, accountName, balance);
+        //  addToList(account);        
             return true;
         }
 }

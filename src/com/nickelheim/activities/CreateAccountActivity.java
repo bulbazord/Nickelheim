@@ -39,8 +39,7 @@ public class CreateAccountActivity extends Activity implements CreateAccountActi
         username =this.getIntent().getExtras().getString(
                                         RegisterButtonListener.USERNAME);
         
-        listener = new CreateAccountButtonListener(this, this,
-                                               AccountList.getInstance());
+        listener = new CreateAccountButtonListener(this, this);
     }
     
     @Override

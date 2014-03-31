@@ -4,6 +4,8 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 
+import java.util.Collection;
+
 /**
  * Represents the account that a user creates after successful
  * login/registration.
@@ -16,15 +18,20 @@ import com.j256.ormlite.field.ForeignCollectionField;
  */
 @DatabaseTable(tableName = "accounts")
 public class Account {
-    @DatabaseField(canBeNull = false, foreign = true)
-    private User user;
-    @DatabaseField(canBeNull = false, foreign = true)
+    public static final String PORTFOLIO_COL = "portfolio";
+    @DatabaseField(canBeNull = false, foreign = true, uniqueCombo = true,
+                   columnName = PORTFOLIO_COL)
     private Portfolio portfolio;
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
+    private int id; //SQL magic, but complicates our querying syntax
+    public static final String ACCOUNT_NAME_COL = "accountName";
+    @DatabaseField(uniqueCombo = true, columnName = ACCOUNT_NAME_COL)
     private String accountName;
     @DatabaseField
     private double balance;
-    
+
+    @ForeignCollectionField
+    private Collection<Transaction> transactions;
     /**
      * No-arg constructor for ORMLite! DO NOT USE
      */
@@ -40,8 +47,8 @@ public class Account {
      * @param accountName
      * @param balance
      */
-    public Account(String username, String accountName, double balance) {
-        // this.username = username;
+    public Account(Portfolio port, String accountName, double balance) {
+        this.portfolio = port;
     	this.accountName = accountName;
         this.balance = balance;
     }
@@ -68,8 +75,11 @@ public class Account {
         return accountName;
     }
     
+    /**
+     * We really should take this out, it is a LoD violation at its core.
+     */
     public String getUsername() {
-    	return user.getUsername();
+    	return portfolio.getUser().getUsername();
     }
     
     public double getBalance() {

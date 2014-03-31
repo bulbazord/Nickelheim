@@ -15,6 +15,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.nickelheim.presenters.storage.NickelOpenHelper;
 import android.util.Log;
+import com.nickelheim.models.Portfolio;
 import com.nickelheim.models.User;
 
 public class RegisterButtonListener {
@@ -58,12 +59,7 @@ public class RegisterButtonListener {
      */
     private class RegistrationTask extends AsyncTask<String, Void, User>
     {
-        protected void onPreExecute() {
-            Toast.makeText(context,
-                           "Yo, fool.",
-                           Toast.LENGTH_LONG).show();
-            super.onPreExecute();
-        }
+
 
         protected User doInBackground(String... usernameAndPassword) {
             User result = null;
@@ -74,6 +70,13 @@ public class RegisterButtonListener {
                     result = new User(usernameAndPassword[0],
                                       usernameAndPassword[1]);
                     userDao.create(result); //stores in d/b
+                    Log.i(RegistrationTask.class.getName(),
+                          "inserted User " + result.toString());
+                    Dao<Portfolio, Integer> portfolioDao =
+                        getHelper().getPortfolioDao();
+                    portfolioDao.create(result.getPortfolioByName("default"));
+                    Log.i(RegistrationTask.class.getName(),
+                          "inserted default Portfolio");
                 } else {
                     // inform the user that they suck
                     result = null;
@@ -89,17 +92,13 @@ public class RegisterButtonListener {
         protected void onPostExecute(User user) {
             if(user == null) {
                 Toast.makeText(context,
-                               "Register not successful.  Try again.",
+                               "Registration not successful.  Try again.",
                                Toast.LENGTH_LONG).show(); 
             } else {
-                Toast.makeText(context,
-                               user.toString(),
-                               Toast.LENGTH_LONG).show(); 
-                
-                // LoginButtonListener.loggedInUser = user;
-                // Intent intent = new Intent(view, LoginSuccessActivity.class);
-                // intent.putExtra(USERNAME, user.getUsername());
-                // view.startActivity(intent);
+                LoginButtonListener.loggedInUser = user;
+                Intent intent = new Intent(view, LoginSuccessActivity.class);
+                intent.putExtra(USERNAME, user.getUsername());
+                view.startActivity(intent);
             }
         }
     }

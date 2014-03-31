@@ -40,8 +40,6 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
      * a specific class.
      */
     private Dao<User, String> userDao = null;
-    private Dao<Portfolio, String> portfolioDao = null;
-    private Dao<Account, String> accountDao = null;
     private Dao<Transaction, Long> transactionDao = null;
 
 
@@ -113,5 +111,21 @@ public class NickelOpenHelper extends OrmLiteSqliteOpenHelper {
             userDao = getDao(User.class);
         }
         return userDao;
+    }
+
+    private Dao<Portfolio, Integer> portfolioDao = null;
+    public Dao<Portfolio, Integer> getPortfolioDao() throws SQLException {
+        if(portfolioDao == null) {
+            portfolioDao = getDao(Portfolio.class);
+        }
+        return portfolioDao;
+    }
+
+    private Dao<Account, Integer> accountDao = null;
+    public Dao<Account, Integer> getAccountDao() throws SQLException {
+        if(accountDao == null) {
+            accountDao = getDao(Account.class);
+        }
+        return accountDao;
     }
 }

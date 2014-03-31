@@ -55,14 +55,6 @@ public class LoginButtonListener {
 
     private class LoadUserTask extends AsyncTask<String, Void, User> {
 
-        private String error = "default";
-
-        protected void onPreExecute() {
-            Toast.makeText(context, "onPreExecute",
-                           Toast.LENGTH_LONG).show();
-            super.onPreExecute();
-        }
-
         protected User doInBackground(String... usernameAndPassword) {
             User result = null;
             try {            
@@ -88,10 +80,10 @@ public class LoginButtonListener {
                 LoginButtonListener.loggedInUser = user;
                 view.startActivity(intent);
             } else {
-                Toast.makeText(context, error,
+                Toast.makeText(context,
+                               "Please enter valid un/pass combination",
                                Toast.LENGTH_LONG).show();
             }
         }
     }
-
 }

@@ -26,9 +26,11 @@ public class Portfolio implements PortfolioModel {
     @ForeignCollectionField(eager = true)
     private Collection<Account> accounts;
 
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(canBeNull = false, foreign = true, uniqueCombo = true)
     private User user;
     @DatabaseField(id = true)
+    private int id;
+    @DatabaseField(uniqueCombo = true)
     private String portfolioName;
 
     /**
@@ -36,6 +38,10 @@ public class Portfolio implements PortfolioModel {
      */
     Portfolio() {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**
