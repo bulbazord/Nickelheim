@@ -47,7 +47,7 @@ public class CreateAccountButtonListener {
                                                                   accountName,
                                                                   balance);
         if(isValidCreateAccount) {
-            new AccountCreationTask().execute(username, accountName);
+            new AccountCreationTask().execute(accountName);
         } else {
             Toast.makeText(context,
                            "The data you've input is invalid. Try again.",
@@ -74,7 +74,6 @@ public class CreateAccountButtonListener {
 
         protected void onPreExecute() {
             balance = view.getBalance();
-                    
         }
 
         protected Account doInBackground(String... args) {
@@ -84,15 +83,17 @@ public class CreateAccountButtonListener {
                 QueryBuilder<Account, Integer> qb = accountDao.queryBuilder();
                 Where<Account, Integer> where = qb.where();
                 where.eq(Account.PORTFOLIO_COL, port.getId())
-                    .and().eq(Account.ACCOUNT_NAME_COL, args[1]);
+                    .and().eq(Account.ACCOUNT_NAME_COL, args[0]);
                 List<Account> accounts = accountDao.query(qb.prepare());
                 if(accounts.size() == 0) { // then make the Account and add
                     // it to the portfolio
-                    acc = new Account(port, args[1], balance);
+                    acc = new Account(port, args[0], balance);
                     port.addAccount(acc);
                     Dao<Portfolio, Integer> portDao =
                         getHelper().getPortfolioDao();
-                    accountDao.create(acc); //causing the present error
+                    accountDao.create(acc); //throwing an error for some reason
+                    // hypothesis: it's a uniqueness issue
+                    // corroborated by logCat, at least
                     portDao.update(port);
                 }                
             } catch(SQLException e) {

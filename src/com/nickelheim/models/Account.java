@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 
 import java.util.Collection;
+import java.util.ArrayList;
 
 /**
  * Represents the account that a user creates after successful
@@ -19,13 +20,13 @@ import java.util.Collection;
 @DatabaseTable(tableName = "accounts")
 public class Account {
     public static final String PORTFOLIO_COL = "portfolio";
-    @DatabaseField(canBeNull = false, foreign = true, uniqueCombo = true,
+    @DatabaseField(canBeNull = false, foreign = true,
                    columnName = PORTFOLIO_COL)
     private Portfolio portfolio;
     @DatabaseField(generatedId = true)
     private int id; //SQL magic, but complicates our querying syntax
     public static final String ACCOUNT_NAME_COL = "accountName";
-    @DatabaseField(uniqueCombo = true, columnName = ACCOUNT_NAME_COL)
+    @DatabaseField(columnName = ACCOUNT_NAME_COL)
     private String accountName;
     @DatabaseField
     private double balance;
@@ -51,6 +52,7 @@ public class Account {
         this.portfolio = port;
     	this.accountName = accountName;
         this.balance = balance;
+        this.transactions = new ArrayList<Transaction>();
     }
 
     /**
@@ -86,6 +88,12 @@ public class Account {
         return balance;
     }
     
+    public void addTransaction(Transaction trans) {
+        transactions.add(trans);
+        balance += trans.getAmount(); //will need to refactor to be negative for
+        // withdrawals if I want to do this
+    }
+
     public void withdraw(double amount) {
     	this.balance -= amount;
     }

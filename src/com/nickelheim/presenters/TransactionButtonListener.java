@@ -8,17 +8,20 @@ import android.widget.Toast;
 
 import com.nickelheim.activities.TransactionActivity;
 import com.nickelheim.models.TransactionList;
+import com.nickelheim.models.Account;
 
 public class TransactionButtonListener {
-	public static final String ACCOUNT = "account";
-	private Context context;
+    public static final String ACCOUNT = "account";
+    private Context context;
     private TransactionActivity view;
-    private TransactionList model;
-    
+    private TransactionList model = TransactionList.getInstance();
+    private Account account;
+
+
     public TransactionButtonListener(TransactionActivity view, Context context,
-    												TransactionList model) {
+                                     Account account) {
         this.view = view;
-        this.model = model;
+        this.account = account;
         this.context = context;
     }
     
@@ -26,12 +29,16 @@ public class TransactionButtonListener {
         long timestamp = getTimeInMilliSeconds();        
     	double amount = view.getAmount();
     	String comment = view.getComment();
-        boolean isValidWithdraw = model.isValidWithdraw(view.getAccount(), amount, timestamp, comment);
+        boolean isValidWithdraw = model.isValidWithdraw(view.getAccount(),
+                                                        amount, timestamp,
+                                                        comment);
         if(isValidWithdraw) {
         	view.updateBalanceField();
-        	Toast.makeText(this.context, "Withdraw successful.", Toast.LENGTH_SHORT).show();
+        	Toast.makeText(this.context, "Withdraw successful.",
+                               Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this.context, "Withdraw not successful.  Try again.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Withdraw not successful.  Try again.",
+                           Toast.LENGTH_SHORT).show();
         }
 
     }

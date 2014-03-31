@@ -31,7 +31,8 @@ public class TransactionActivity extends Activity
         setContentView(R.layout.activity_transaction);
 		
         listener = new TransactionButtonListener(this, this,
-                                                 TransactionList.getInstance());
+                                                 CreateAccountSuccessActivity
+                                                     .accountToBeViewed);
 		
         amountField =  (EditText) findViewById(R.id.amount);
         balanceField = (TextView) findViewById(R.id.balance);
