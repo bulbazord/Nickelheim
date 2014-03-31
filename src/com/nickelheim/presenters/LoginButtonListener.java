@@ -21,14 +21,12 @@ public class LoginButtonListener {
     public static final String USERNAME = "username";
     private Context context;
     private LoginActivity view;
-    private UserList model;
     public static User loggedInUser = null;
     
     private NickelOpenHelper databaseHelper = null;
 
-    public LoginButtonListener(LoginActivity view, Context context, UserList model) {
+    public LoginButtonListener(LoginActivity view, Context context) {
         this.view = view;
-        this.model = model;
         this.context = context;
         
     }
@@ -36,8 +34,6 @@ public class LoginButtonListener {
     public void attemptLogin() {
         String username = view.getUsername();
         String password = view.getPassword();
-        // Toast.makeText(context, "Login not successful.  Try again.",
-        //                Toast.LENGTH_LONG).show();
 
         new LoadUserTask().execute(username, password);
     }
@@ -49,10 +45,17 @@ public class LoginButtonListener {
         }
         return databaseHelper;
     }
+    // I might need to close the helper at some point, but right now it seems
+    // unnecessary. I'd need to make an onClose method for this presenter
+    // which I would need to hook up the corresponding Activity to call in its
+    // onClose method.
+    // private void closeHelper() {
+    //     OpenHelperManager.releaseHelper();
+    // }
 
     private class LoadUserTask extends AsyncTask<String, Void, User> {
 
-        private String error;
+        private String error = "default";
 
         protected void onPreExecute() {
             Toast.makeText(context, "onPreExecute",
@@ -69,10 +72,12 @@ public class LoginButtonListener {
                    || !result.getPassword().equals(usernameAndPassword[1])) {
                     result = null;
                 }
-            } catch (Throwable e) {
+            } catch (SQLException e) {
                 result = null;
-                error = "Runtime ";
-            }
+                throw new RuntimeException(e);
+            }//  finally {
+            //     closeHelper();
+            // }
             return result;
         }
 
@@ -80,10 +85,10 @@ public class LoginButtonListener {
             if (user != null) {
                 Intent intent  = new Intent(view, LoginSuccessActivity.class);
                 intent.putExtra(USERNAME, user.getUsername());
-                loggedInUser = user;
+                LoginButtonListener.loggedInUser = user;
                 view.startActivity(intent);
             } else {
-                Toast.makeText(context, "issue",
+                Toast.makeText(context, error,
                                Toast.LENGTH_LONG).show();
             }
         }

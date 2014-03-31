@@ -68,9 +68,9 @@ public class Account {
         return accountName;
     }
     
-    // public String getUsername() {
-    // 	return username;
-    // }
+    public String getUsername() {
+    	return user.getUsername();
+    }
     
     public double getBalance() {
         return balance;

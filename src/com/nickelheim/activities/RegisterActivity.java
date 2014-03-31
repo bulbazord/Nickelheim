@@ -25,7 +25,7 @@ public class RegisterActivity extends Activity implements RegisterActivityInterf
         passwordField =  (EditText) findViewById(R.id.register_password_field);
         
         
-        listener = new RegisterButtonListener(this, this, UserList.getInstance());
+        listener = new RegisterButtonListener(this, this);
     }
 
     @Override

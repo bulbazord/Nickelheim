@@ -35,7 +35,7 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         
-        listener = new LoginButtonListener(this, this, UserList.getInstance());
+        listener = new LoginButtonListener(this, this);
 
         usernameField =  (EditText) findViewById(R.id.login_username);
         passwordField =  (EditText) findViewById(R.id.login_password);
