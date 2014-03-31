@@ -27,10 +27,11 @@ public class TransactionActivity extends Activity
     
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_transaction);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transaction);
 		
-		listener = new TransactionButtonListener(this, this, TransactionList.getInstance());
+        listener = new TransactionButtonListener(this, this,
+                                                 TransactionList.getInstance());
 		
         amountField =  (EditText) findViewById(R.id.amount);
         balanceField = (TextView) findViewById(R.id.balance);
@@ -38,7 +39,7 @@ public class TransactionActivity extends Activity
         commentField = (EditText) findViewById(R.id.comment);
         
         String accountName = this.getIntent().getExtras().getString(CreateAccountSuccessActivity.ACCOUNT_NAME);
-        account = AccountList.getInstance().getAccountByName(accountName);
+        account = CreateAccountSuccessActivity.accountToBeViewed;
         
         accountNameField.setText(accountName);
         
@@ -81,7 +82,9 @@ public class TransactionActivity extends Activity
 	
 	public void updateBalanceField() {
 	    NumberFormat format = NumberFormat.getCurrencyInstance();
-		balanceField.setText(format.format(account.getBalance()));	
+            balanceField.setText(format.format(account.getBalance()));
+            // presently the previous line is calling a null pointer exception
+            // account needs to be set
 	}
 
 }
