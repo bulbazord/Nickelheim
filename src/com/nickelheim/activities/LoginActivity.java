@@ -1,13 +1,13 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
-import com.nickelheim.models.UserList;
 import com.nickelheim.presenters.LoginButtonListener;
-import com.nickelheim.views.AbstractLoginActivity;
+import com.nickelheim.views.LoginActivityInterface;
 
 
 /**
@@ -16,9 +16,18 @@ import com.nickelheim.views.AbstractLoginActivity;
  * @author Nickelheim Group
  * @version 1.0
  */
-public class LoginActivity extends AbstractLoginActivity {
+public class LoginActivity extends Activity implements LoginActivityInterface {
+    /**
+     * listener instance variable.
+     */
     private LoginButtonListener listener;
+    /**
+     * usernameField instance variable.
+     */
     private EditText usernameField;
+    /**
+     * passwordField instance variable.
+     */
     private EditText passwordField;
 
     /**
@@ -26,7 +35,7 @@ public class LoginActivity extends AbstractLoginActivity {
      *
      * Sets up the layout, among other necessities.
      *
-     * @param Bundle to be loaded if the application was saved
+     * @param savedInstanceState to be loaded if the application was saved
      */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -34,7 +43,7 @@ public class LoginActivity extends AbstractLoginActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         
-        listener = new LoginButtonListener(this, this, UserList.getInstance());
+        listener = new LoginButtonListener(this, this);
 
         usernameField =  (EditText) findViewById(R.id.login_username);
         passwordField =  (EditText) findViewById(R.id.login_password);
@@ -43,22 +52,28 @@ public class LoginActivity extends AbstractLoginActivity {
     
 
     /**
-     * Signals to the presenter that the user has attempted to log in.
-     *
-     * Called automatically when the user presses a button.
-     *
-     * @param View standard argument for button-tied method
+     * method to return username.
+     * 
+     * @return username
      */
     @Override
     public String getUsername() {
         return usernameField.getText().toString();
     }
-
+    /**
+     * method to return password.
+     * 
+     * @return password as a String
+     */
     @Override
     public String getPassword() {
         return passwordField.getText().toString();
     }
-    
+    /**
+     * method signaling presenter that user is attempting to login.
+     * 
+     * @param view is the current activity
+     */
     public void attemptLogin(View view) {
         listener.attemptLogin();
     }

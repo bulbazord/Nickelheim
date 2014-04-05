@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.nickelheim.activities.LoginActivity;
 import com.nickelheim.activities.RegisterActivity;
-import com.nickelheim.views.AbstractWelcomeActivity;
+import com.nickelheim.activities.WelcomeActivity;
 /**
  * The presenter responsible for managing the task of welcoming the user.
  *
@@ -12,17 +12,19 @@ import com.nickelheim.views.AbstractWelcomeActivity;
  * @version 1.0
  */
 public class WelcomeButtonListener {
-
-    private AbstractWelcomeActivity view;
+    /**
+     * view instance variable.
+     */
+    private WelcomeActivity view;
 
     /**
      * Constructs the WelcomeButtonListener, setting up a reference to the
      * correpsonding view object.
      *
-     * @param AbstractWelcomeActivity the Activity/view to which this is tied
+     * @param viewInput is the view
      */
-    public WelcomeButtonListener(AbstractWelcomeActivity view) {
-        this.view = view;
+    public WelcomeButtonListener(WelcomeActivity viewInput) {
+        this.view = viewInput;
     }
 
     /**

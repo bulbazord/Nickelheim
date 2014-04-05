@@ -1,15 +1,15 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
-import com.nickelheim.models.AccountList;
 import com.nickelheim.presenters.CreateAccountButtonListener;
 import com.nickelheim.presenters.RegisterButtonListener;
-import com.nickelheim.views.AbstractCreateAccountActivity;
+import com.nickelheim.views.CreateAccountActivityInterface;
 
 /**
  * An <code>Activity</code> responsible for Account creation.
@@ -19,11 +19,23 @@ import com.nickelheim.views.AbstractCreateAccountActivity;
  *
  * @author Nickeclheim
  */
-public class CreateAccountActivity extends AbstractCreateAccountActivity {
+public class CreateAccountActivity extends Activity implements 
+                                                CreateAccountActivityInterface {
+    /**
+     * Listener instance variable.
+     */
     private CreateAccountButtonListener listener;
-    private EditText firstNameField;
-    private EditText lastNameField;
-    private EditText emailField;
+    /**
+     * accountNameField instance variable.
+     */
+    private EditText accountNameField;
+    /**
+     * balanceField instance variable.
+     */
+    private EditText balanceField;
+    /**
+     * username instance variable.
+     */
     private String username;
     
     @Override
@@ -31,39 +43,48 @@ public class CreateAccountActivity extends AbstractCreateAccountActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         
-        firstNameField =  (EditText) findViewById(
-                                        R.id.create_account_first_name_field);
-        lastNameField =  (EditText) findViewById(
-                                        R.id.create_account_last_name_field);
-        emailField = (EditText) findViewById(
-                                        R.id.create_account_email_field);
-        username =this.getIntent().getExtras().getString(
+        accountNameField =  (EditText) findViewById(
+                                        R.id.create_account_account_name_field);
+        balanceField = (EditText) findViewById(
+                R.id.create_account_balance_field);
+        
+        username = this.getIntent().getExtras().getString(
                                         RegisterButtonListener.USERNAME);
         
-        listener = new CreateAccountButtonListener(this, this,
-                                                   new AccountList());
+        listener = new CreateAccountButtonListener(this, this);
     }
-    
+    /**
+     * method to return username.
+     * 
+     * @return username as a String
+     */
     @Override
     public String getUsername() {
         return username;
     }
-    
+    /**
+     * method to return account name.
+     * 
+     * @return account name as a String
+     */
     @Override
-    public String getFirstName() {
-        return firstNameField.getText().toString();
+    public String getAccountName() {
+        return accountNameField.getText().toString();
     }
-
+    /**
+     * method to return balance.
+     * 
+     * @return balance as a double
+     */
     @Override
-    public String getLastName() {
-        return lastNameField.getText().toString();
+    public double getBalance() {
+        return Double.valueOf(balanceField.getText().toString());
     }
-    
-    @Override
-    public String getEmail() {
-        return emailField.getText().toString();
-    }
-
+    /**
+     * signals to the presenter to create and account.
+     *
+     * @param view standard argument for button-tied method
+     */
     @Override
     public void attemptCreateAccount(View view) {
         listener.attemptCreateAccount();

@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateReportActivity" >
+
+    <Button
+        android:id="@+id/create_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="118dp"
+        android:gravity="center"
+        android:text="@string/create_report"
+        android:onClick="showReport" />
+
+    <EditText
+        android:id="@+id/end_date_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/create_report"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="73dp"
+        android:ems="10"
+        android:hint="@string/mmddyyyy"
+        android:gravity="center"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/end_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/end_date_input"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="19dp"
+        android:gravity="center"
+        android:text="@string/end_date" />
+
+    <TextView
+        android:id="@+id/start_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="@string/start_date" />
+
+    <EditText
+        android:id="@+id/start_date_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/start_date_text"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/mmddyyyy"
+        android:inputType="date" >
+
+        <requestFocus />
+    </EditText>
+    
+</RelativeLayout>

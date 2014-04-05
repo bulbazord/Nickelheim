@@ -1,18 +1,34 @@
 package com.nickelheim.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
 import com.nickelheim.R;
-import com.nickelheim.models.UserList;
 import com.nickelheim.presenters.RegisterButtonListener;
-import com.nickelheim.views.AbstractRegisterActivity;
+import com.nickelheim.views.RegisterActivityInterface;
 
-public class RegisterActivity extends AbstractRegisterActivity {
+/**
+ * Activity for registration.
+ * 
+ * @author Nickelheim
+ *
+ */
+public class RegisterActivity extends Activity
+                                         implements RegisterActivityInterface {
+    /**
+     * listener instance variable.
+     */
     private RegisterButtonListener listener;
+    /**
+     * usernameField instance variable.
+     */
     private EditText usernameField;
+    /**
+     * passwordField instance variable.
+     */
     private EditText passwordField;
     
     @Override
@@ -24,19 +40,31 @@ public class RegisterActivity extends AbstractRegisterActivity {
         passwordField =  (EditText) findViewById(R.id.register_password_field);
         
         
-        listener = new RegisterButtonListener(this, this, UserList.getInstance());
+        listener = new RegisterButtonListener(this, this);
     }
-
+    /**
+     * method to return username.
+     * 
+     * @return username as a String
+     */
     @Override
     public String getUsername() {
         return usernameField.getText().toString();
     }
-
+    /**
+     * method to return password.
+     * 
+     * @return password as a String
+     */
     @Override
     public String getPassword() {
         return passwordField.getText().toString();
     }
-    
+    /**
+     * method signaling presenter that user is attempting to register.
+     * 
+     * @param view is the current activity
+     */
     public void attemptRegistration(View view) {
         listener.attemptRegistration();
     }

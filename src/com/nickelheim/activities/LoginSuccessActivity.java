@@ -8,8 +8,18 @@ import android.view.View;
 
 import com.nickelheim.R;
 import com.nickelheim.presenters.LoginButtonListener;
+import com.nickelheim.views.LoginSuccessActivityInterface;
 
-public class LoginSuccessActivity extends Activity {
+/**
+ * Represents the Activity users see after successful login.
+ * 
+ * @author Nickelheim
+ *
+ */
+public class LoginSuccessActivity extends Activity implements LoginSuccessActivityInterface {
+    /**
+     * USERNAME instance variable.
+     */
     public static final String USERNAME = "username";
 
     @Override
@@ -24,13 +34,31 @@ public class LoginSuccessActivity extends Activity {
         getMenuInflater().inflate(R.menu.login_success, menu);
         return true;
     }
-    
+    /**
+     * method to create a new account.
+     * 
+     * @param view is the current activity
+     */
+    @Override
     public void createAccount(View view) {
         
         Intent intent  = new Intent(this, CreateAccountActivity.class);
-        String username = this.getIntent().getExtras().getString(LoginButtonListener.USERNAME);
+        String username = this.getIntent().getExtras()
+                                       .getString(LoginButtonListener.USERNAME);
         intent.putExtra(USERNAME, username);
         startActivity(intent);
+    }
+    /**
+     * sends user to a new activity to view account.
+     * 
+     * @param view is the current activity
+     */
+    public void showAccount(View view) {
+    	Intent intent = new Intent(this, CreateAccountSuccessActivity.class);
+    	String username = this.getIntent().getExtras()
+    	                               .getString(LoginButtonListener.USERNAME);
+    	intent.putExtra(USERNAME, username);
+    	startActivity(intent);
     }
 
 }

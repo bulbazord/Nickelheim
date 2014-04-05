@@ -23,4 +23,14 @@
         android:onClick="createAccount"
         android:text="@string/create_account" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:text="@string/view_account"
+        android:onClick="showAccount" />
+
 </RelativeLayout>

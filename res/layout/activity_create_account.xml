@@ -9,58 +9,43 @@
     tools:context=".CreateAccountActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/account_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/create_account"
         android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/create_account_first_name_field"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="@string/firstName"
-        android:inputType="textPersonName" >
-        
-        <requestFocus />
-    </EditText>
-        
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="45dp"
         android:onClick="attemptCreateAccount"
         android:text="@string/create_account" />
 
     <EditText
-        android:id="@+id/create_account_email_field"
+        android:id="@+id/create_account_account_name_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/create_account_last_name_field"
-        android:layout_marginBottom="68dp"
+        android:layout_alignLeft="@+id/account_name"
+        android:layout_below="@+id/account_name"
+        android:layout_marginTop="21dp"
         android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
-
+        android:hint="@string/accountName"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/create_account_last_name_field"
+        android:id="@+id/create_account_balance_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/create_account_first_name_field"
-        android:layout_below="@+id/create_account_first_name_field"
-        android:layout_marginTop="41dp"
+        android:layout_alignLeft="@+id/create_account_account_name_field"
+        android:layout_below="@+id/create_account_account_name_field"
+        android:layout_marginTop="19dp"
         android:ems="10"
-        android:hint="@string/lastName"
-        android:inputType="textPersonName" />
+        android:hint="@string/balance"
+        android:inputType="numberDecimal" />
 
 </RelativeLayout>
