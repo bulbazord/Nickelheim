@@ -56,6 +56,9 @@ public class UserList implements UserModel {
      */
     @Override
     public boolean isValidUser(final String username, final String password) {
+        if (username == null || password == null) {
+            return false;
+        }
         User user = userList.get(username);
         if (user != null) {
             if (user.getPassword().equals(password)) {

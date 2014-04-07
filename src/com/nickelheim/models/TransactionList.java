@@ -45,6 +45,9 @@ public class TransactionList implements TransactionModel {
      *    
      */
     public boolean isValidWithdraw(Account account, double amount, long timestamp, String comment) {
+        if (account == null || amount == null || timestamp == null || comment == null) {
+            return false;
+        }
         if (amount <= 0) {
             return false;
         } 
@@ -70,6 +73,9 @@ public class TransactionList implements TransactionModel {
      * @return boolean
 	 */
     public boolean isValidDeposit(Account account, double amount, long timestamp, String comment) {
+        if (account == null || amount == null || timestamp == null || comment == null) {
+            return false;
+        }
         if (amount <= 0) {
             return false;
         } 
