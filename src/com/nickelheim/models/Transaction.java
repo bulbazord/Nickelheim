@@ -7,6 +7,12 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * Transaction class.
  * 
@@ -55,6 +61,11 @@ public class Transaction {
      */
     @DatabaseField
     private String comment;
+
+    /**
+     * dateFormat instance variable.
+     */
+    private static String dateFormat = "MMddyyy HH:mm:ss";
 
     /**
      * No arg constructor for ORMLite.
@@ -148,4 +159,46 @@ public class Transaction {
                 + "Transaction Amount: " + amount + newLine 
                 + "Ending Balance: " + accountBalance); 
     }	
+
+    /**
+     * converts start date into seconds.
+     * 
+     * @param startingDate is the start date as a String
+     * @return seconds as a long
+     */
+    public static long startDateToSeconds (String startingDate) {
+        String startDateWithSeconds = startingDate + " 00:00:00";
+        //System.out.println("startDateWithSeconds = "+ startDateWithSeconds);
+        SimpleDateFormat simpleDateFormat = 
+                                    new SimpleDateFormat(dateFormat, Locale.US);
+        try {
+            Date date = simpleDateFormat.parse(startDateWithSeconds);
+            long milliseconds = date.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0; 
+    }
+    /**
+     * converts end date into seconds.
+     * 
+     * @param endingDate is the end date
+     * @return seconds as a long
+     */
+    public static long endDateToSeconds (String endingDate) {
+        String endDateWithSeconds = endingDate + " 23:59:59";
+        //System.out.println("endDateWithSeconds = "+ endDateWithSeconds );
+        SimpleDateFormat simpleDateFormat = 
+                                    new SimpleDateFormat(dateFormat, Locale.US);
+        try {
+            Date date = simpleDateFormat.parse(endDateWithSeconds);
+            long milliseconds = date.getTime();
+            return milliseconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0; 
+    }
+
 }

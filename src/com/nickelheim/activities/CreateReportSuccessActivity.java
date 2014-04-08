@@ -63,10 +63,10 @@ public class CreateReportSuccessActivity extends Activity {
         username = this.getIntent().getExtras().getString(
                 CreateReportButtonListener.USERNAME);
         
-        long startTime = startDateToSeconds(startDate);
+        long startTime = Transaction.startDateToSeconds(startDate);
         //System.out.println("startTime = " + startTime);
         
-        long endTime = endDateToSeconds(endDate);
+        long endTime = Transaction.endDateToSeconds(endDate);
         //System.out.println("endTime = " + endTime);
         
         transactionField =  (TextView) findViewById(R.id.transactions);
@@ -84,46 +84,6 @@ public class CreateReportSuccessActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.create_report_success, menu);
         return true;
-    }
-    /**
-     * converts start date into seconds.
-     * 
-     * @param startingDate is the start date as a String
-     * @return seconds as a long
-     */
-    public long startDateToSeconds (String startingDate) {
-        String startDateWithSeconds = startingDate + " 00:00:00";
-        //System.out.println("startDateWithSeconds = "+ startDateWithSeconds);
-        SimpleDateFormat simpleDateFormat = 
-                                    new SimpleDateFormat(dateFormat, Locale.US);
-        try {
-            Date date = simpleDateFormat.parse(startDateWithSeconds);
-            long milliseconds = date.getTime();
-            return milliseconds;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0; 
-    }
-    /**
-     * converts end date into seconds.
-     * 
-     * @param endingDate is the end date
-     * @return seconds as a long
-     */
-    public long endDateToSeconds (String endingDate) {
-        String endDateWithSeconds = endingDate + " 23:59:59";
-        //System.out.println("endDateWithSeconds = "+ endDateWithSeconds );
-        SimpleDateFormat simpleDateFormat = 
-                                    new SimpleDateFormat(dateFormat, Locale.US);
-        try {
-            Date date = simpleDateFormat.parse(endDateWithSeconds);
-            long milliseconds = date.getTime();
-            return milliseconds;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0; 
     }
 
 }
