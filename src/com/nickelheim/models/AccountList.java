@@ -80,7 +80,7 @@ public class AccountList implements AccountListModel {
     @Override
     public boolean isValidCreateAccount(final String username, final String accountName, final double
                                                                     balance) {
-        if (username == null || accountName == null || balance == null) {
+        if (username == null || accountName == null) {
             return false;
         }
         if (accountName.length() == 0) {
